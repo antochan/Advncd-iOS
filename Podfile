@@ -9,7 +9,9 @@ target 'Advncd' do
   pod 'IQKeyboardManager'
   pod 'lottie-ios'
   pod 'WhatsNewKit'
-  
+  pod 'FBSDKLoginKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'

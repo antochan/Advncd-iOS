@@ -107,7 +107,7 @@ class AuthView: UIView {
         forgotPassButton.anchor(top: confirmButton.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: 0, height: screenHeight * 0.01))
         forgotPassButton.setTitleColor(UIColor.FlatColor.Gray.IdleGray, for: .normal)
         forgotPassButton.setTitle("Forgot your password?", for: .normal)
-        forgotPassButton.titleLabel?.font = UIFont.MontserratRegular(size: 12)
+        forgotPassButton.titleLabel?.font = UIFont.MontserratRegular(size: 11)
         forgotPassButton.sizeToFit()
         
         //facebook Button

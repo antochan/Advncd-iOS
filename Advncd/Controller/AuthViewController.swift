@@ -12,24 +12,23 @@ import WhatsNewKit
 import FirebaseAuth
 import FirebaseFirestore
 import Firebase
+import FacebookCore
+import FacebookLogin
 
 class AuthViewController: UIViewController {
     
     let authView = AuthView()
-    
-    var activeTextField = UITextField()
     
     override func loadView() {
         self.view = authView
     }
     
     override func viewWillLayoutSubviews() {
-//        if Auth.auth().currentUser != nil {
-//            transitionToBaseVC()
-//        } else {
-//            featuresIfNeeded()
-//        }
-        featuresIfNeeded()
+        if Auth.auth().currentUser != nil {
+            transitionToBaseVC()
+        } else {
+            featuresIfNeeded()
+        }
     }
 
     override func viewDidLoad() {
@@ -38,6 +37,7 @@ class AuthViewController: UIViewController {
         authView.emailTextfield.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
         authView.passwordTextfield.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
         authView.confirmButton.addTarget(self, action: #selector(confirmPressed), for: .touchUpInside)
+        authView.facebookButton.addTarget(self, action: #selector(facebookPressed), for: .touchUpInside)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -54,13 +54,52 @@ class AuthViewController: UIViewController {
         authView.passwordImage.image = #imageLiteral(resourceName: "lock-white")
     }
     
+    @objc func facebookPressed() {
+        let loginManager = LoginManager()
+        authView.facebookButton.isUserInteractionEnabled = false
+        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { (result) in
+            switch result {
+            case .success(grantedPermissions: _, declinedPermissions: _, token: _):
+                self.signIntoFirebase()
+            case .failed(let error):
+                self.authView.displayError(message: error.localizedDescription)
+            case .cancelled:
+                self.authView.facebookButton.isUserInteractionEnabled = true
+                return
+            }
+        }
+    }
+    
+    fileprivate func signIntoFirebase() {
+        guard let authenticationToken = AccessToken.current?.authenticationToken else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: authenticationToken)
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+            if let err = error {
+                self.authView.displayError(message: err.localizedDescription)
+            } else {
+                if let uid = user?.user.uid, let email = user?.user.email {
+                    let docRef = Firestore.firestore().collection("Users").document(uid)
+                    docRef.getDocument { (document, error) in
+                        if let document = document, !document.exists {
+                            self.writeToDB(email: email, uid: uid)
+                        }
+                    }
+                    UIViewController.removeSpinner(spinner: sv)
+                    self.transitionToBaseVC()
+                }
+            }
+            return
+        }
+    }
+    
     @objc func confirmPressed() {
         let sv = UIViewController.displaySpinner(onView: self.view)
         formChecker(sv: sv)
         if let email = authView.emailTextfield.text , let password = authView.passwordTextfield.text {
             AuthServices.instance.loginUser(email: email, password: password) { (success) in
                 if success {
-                    print("Logged In transition to base VC")
+                    self.transitionToBaseVC()
                 } else {
                     self.registerUser(email: email, password: password, sv: sv)
                 }
@@ -89,7 +128,7 @@ class AuthViewController: UIViewController {
     func writeToDB(email: String, uid: String) {
         AuthServices.instance.writeUserToDB(uid: uid, email: email) { (success) in
             if success {
-                print("transition now!")
+                self.transitionToBaseVC()
             } else {
                 self.authView.displayError(message: AuthServices.instance.errorMessage)
             }
@@ -134,6 +173,18 @@ class AuthViewController: UIViewController {
         if let vc = guidanceVC {
             self.present(vc, animated: true)
         }
+    }
+    
+    func transitionToBaseVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(secondViewController, animated: true, completion: nil)
     }
 
 }
