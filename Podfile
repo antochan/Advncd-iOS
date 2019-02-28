@@ -7,7 +7,11 @@ target 'Advncd' do
 
   # Pods for Advncd
   pod 'IQKeyboardManager'
+  pod 'lottie-ios'
+  pod 'WhatsNewKit'
+  
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
  
 
   target 'AdvncdTests' do

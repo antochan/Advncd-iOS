@@ -23,6 +23,16 @@
 		8A15BF3A22280989001C683D /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF3922280989001C683D /* AnchorExtension.swift */; };
 		8A15BF3C222809A4001C683D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF3B222809A4001C683D /* Constants.swift */; };
 		8A15BF3E222812FE001C683D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF3D222812FE001C683D /* Fonts.swift */; };
+		8A15BF4622283644001C683D /* NeogreyRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF4422283644001C683D /* NeogreyRegular.otf */; };
+		8A15BF4722283644001C683D /* NeogreyMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF4522283644001C683D /* NeogreyMedium.otf */; };
+		8A15BF4D222836BA001C683D /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF48222836BA001C683D /* Montserrat-SemiBold.ttf */; };
+		8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF49222836BA001C683D /* Montserrat-Medium.ttf */; };
+		8A15BF4F222836BA001C683D /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF4A222836BA001C683D /* Montserrat-Light.ttf */; };
+		8A15BF50222836BA001C683D /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF4B222836BA001C683D /* Montserrat-Bold.ttf */; };
+		8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF4C222836BA001C683D /* Montserrat-Regular.ttf */; };
+		8A15BF5422283C4C001C683D /* Loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF5322283C4C001C683D /* Loader.json */; };
+		8A15BF5622283C63001C683D /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF5522283C63001C683D /* ViewControllerExtensions.swift */; };
+		8A15BF58222841D7001C683D /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF57222841D7001C683D /* AuthServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +75,16 @@
 		8A15BF3922280989001C683D /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 		8A15BF3B222809A4001C683D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A15BF3D222812FE001C683D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		8A15BF4422283644001C683D /* NeogreyRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NeogreyRegular.otf; sourceTree = "<group>"; };
+		8A15BF4522283644001C683D /* NeogreyMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NeogreyMedium.otf; sourceTree = "<group>"; };
+		8A15BF48222836BA001C683D /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		8A15BF49222836BA001C683D /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		8A15BF4A222836BA001C683D /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		8A15BF4B222836BA001C683D /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		8A15BF4C222836BA001C683D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		8A15BF5322283C4C001C683D /* Loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loader.json; sourceTree = "<group>"; };
+		8A15BF5522283C63001C683D /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		8A15BF57222841D7001C683D /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +197,7 @@
 		8A15BF2E2227FD9A001C683D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8A15BF57222841D7001C683D /* AuthServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -184,10 +205,13 @@
 		8A15BF2F2227FDA7001C683D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8A15BF5222283C45001C683D /* Animations */,
+				8A15BF4122283183001C683D /* Fonts */,
 				8A15BF302227FDCF001C683D /* Colors.swift */,
 				8A15BF3922280989001C683D /* AnchorExtension.swift */,
 				8A15BF3B222809A4001C683D /* Constants.swift */,
 				8A15BF3D222812FE001C683D /* Fonts.swift */,
+				8A15BF5522283C63001C683D /* ViewControllerExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -198,6 +222,28 @@
 				8A15BF3722280685001C683D /* AuthView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8A15BF4122283183001C683D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8A15BF4B222836BA001C683D /* Montserrat-Bold.ttf */,
+				8A15BF4A222836BA001C683D /* Montserrat-Light.ttf */,
+				8A15BF49222836BA001C683D /* Montserrat-Medium.ttf */,
+				8A15BF4C222836BA001C683D /* Montserrat-Regular.ttf */,
+				8A15BF48222836BA001C683D /* Montserrat-SemiBold.ttf */,
+				8A15BF4522283644001C683D /* NeogreyMedium.otf */,
+				8A15BF4422283644001C683D /* NeogreyRegular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8A15BF5222283C45001C683D /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				8A15BF5322283C4C001C683D /* Loader.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		EAEB3B6F3FF371880BC296C6 /* Pods */ = {
@@ -331,9 +377,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A15BF50222836BA001C683D /* Montserrat-Bold.ttf in Resources */,
+				8A15BF5422283C4C001C683D /* Loader.json in Resources */,
+				8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */,
+				8A15BF4722283644001C683D /* NeogreyMedium.otf in Resources */,
 				8A15BF092227FCD7001C683D /* LaunchScreen.storyboard in Resources */,
 				8A15BF3622280562001C683D /* GoogleService-Info.plist in Resources */,
+				8A15BF4F222836BA001C683D /* Montserrat-Light.ttf in Resources */,
+				8A15BF4D222836BA001C683D /* Montserrat-SemiBold.ttf in Resources */,
+				8A15BF4622283644001C683D /* NeogreyRegular.otf in Resources */,
 				8A15BF062227FCD7001C683D /* Assets.xcassets in Resources */,
+				8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */,
 				8A15BF042227FCD5001C683D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,14 +416,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Advncd/Pods-Advncd-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,11 +498,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A15BF5622283C63001C683D /* ViewControllerExtensions.swift in Sources */,
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,
 				8A15BF3822280685001C683D /* AuthView.swift in Sources */,
 				8A15BF3A22280989001C683D /* AnchorExtension.swift in Sources */,
+				8A15BF58222841D7001C683D /* AuthServices.swift in Sources */,
 				8A15BF312227FDCF001C683D /* Colors.swift in Sources */,
 				8A15BF3C222809A4001C683D /* Constants.swift in Sources */,
 			);

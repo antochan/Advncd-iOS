@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Lottie
+import WhatsNewKit
 
 class AuthViewController: UIViewController {
     
@@ -17,12 +19,22 @@ class AuthViewController: UIViewController {
     override func loadView() {
         self.view = authView
     }
+    
+    override func viewWillLayoutSubviews() {
+//        if Auth.auth().currentUser != nil {
+//            transitionToBaseVC()
+//        } else {
+//            featuresIfNeeded()
+//        }
+        featuresIfNeeded()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         authView.emailTextfield.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
         authView.passwordTextfield.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
+        authView.confirmButton.addTarget(self, action: #selector(confirmPressed), for: .touchUpInside)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -37,6 +49,73 @@ class AuthViewController: UIViewController {
     @objc func passwordDidChange(_ textfield: UITextField) {
         authView.passwordDivider.backgroundColor = .white
         authView.passwordImage.image = #imageLiteral(resourceName: "lock-white")
+    }
+    
+    @objc func confirmPressed() {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        formChecker(sv: sv)
+        if let email = authView.emailTextfield.text , let password = authView.passwordTextfield.text {
+            AuthServices.instance.loginUser(email: email, password: password) { (success) in
+                if success {
+                    print("Logged In transition to base VC")
+                } else {
+                    self.registerUser(email: email, password: password, sv: sv)
+                }
+            }
+        }
+    }
+    
+    func registerUser(email: String, password: String, sv: UIView) {
+        AuthServices.instance.registerUser(email: email, password: password) { (success) in
+            if success {
+                print("user registered! Transition to BaseVC")
+            } else {
+                self.authView.errorLabel.isHidden = false
+                self.authView.errorLabel.text = AuthServices.instance.errorMessage
+                UIViewController.removeSpinner(spinner: sv)
+            }
+        }
+    }
+    
+    func formChecker(sv: UIView) {
+        if authView.emailTextfield.text == "" || authView.passwordTextfield.text == "" {
+            authView.errorLabel.isHidden = false
+            authView.errorLabel.text = "Please make sure to fill in both email and password!"
+            UIViewController.removeSpinner(spinner: sv)
+        }
+    }
+    
+    func featuresIfNeeded() {
+        let items = [
+            WhatsNew.Item(title: "Authentication", subtitle: "Logging in is simple. If the current login details you put in already exists you will get logged in automatically otherwise we will register for you", image: #imageLiteral(resourceName: "Auth")),
+            WhatsNew.Item(title: "Create your own", subtitle: "Advncd allows you to create your own augmented reality experience by creating your own custom QR code", image: #imageLiteral(resourceName: "Create")),
+            WhatsNew.Item(title: "Get Creative", subtitle: "Get creative with what you'd like to do with your own custom AR experience", image: #imageLiteral(resourceName: "Creative"))
+        ]
+        
+        let theme = WhatsNewViewController.Theme { configuration in
+            configuration.apply(animation: .fade)
+            configuration.backgroundColor = UIColor.FlatColor.Blue.DarkBlue
+            configuration.titleView.titleFont = UIFont.MontserratSemiBold(size: 35)
+            configuration.titleView.titleColor = UIColor.FlatColor.Green.LogoGreen
+            configuration.completionButton.backgroundColor = UIColor.FlatColor.Green.LogoGreen
+            configuration.itemsView.titleFont = UIFont.MontserratSemiBold(size: 17)
+            configuration.itemsView.titleColor = UIColor.FlatColor.Green.LogoGreen
+            configuration.itemsView.subtitleFont = UIFont.MontserratRegular(size: 15)
+            configuration.itemsView.subtitleColor = .white
+            configuration.itemsView.imageSize = .preferred
+        }
+        
+        let config = WhatsNewViewController.Configuration(theme: theme)
+        
+        let guidance = WhatsNew(title: "How it Works", items: items)
+        
+        let keyValueVersionStore = KeyValueWhatsNewVersionStore(keyValueable: UserDefaults.standard)
+        
+        let guidanceVC = WhatsNewViewController(whatsNew: guidance, configuration: config, versionStore: keyValueVersionStore)
+        
+        if let vc = guidanceVC {
+            self.present(vc, animated: true)
+        }
     }
 
 }

@@ -36,6 +36,9 @@ class AuthView: UIView {
     //facebook Button
     let facebookButton = UIButton()
     
+    //error label
+    let errorLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -91,37 +94,45 @@ class AuthView: UIView {
         
         //confirm Button
         backgroundOverlay.addSubview(confirmButton)
-        confirmButton.anchor(top: passwordDivider.bottomAnchor, leading: passwordDivider.leadingAnchor, bottom: nil, trailing: passwordDivider.trailingAnchor, padding: .init(top: screenHeight * 0.075, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: screenHeight * 0.06))
+        confirmButton.anchor(top: passwordDivider.bottomAnchor, leading: passwordDivider.leadingAnchor, bottom: nil, trailing: passwordDivider.trailingAnchor, padding: .init(top: screenHeight * 0.1, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: screenHeight * 0.06))
         confirmButton.backgroundColor = UIColor.FlatColor.Green.LogoGreen
         confirmButton.setTitle("LOGIN", for: .normal)
         confirmButton.setTitleColor(.white, for: .normal)
         confirmButton.layer.cornerRadius = 15
         confirmButton.layer.masksToBounds = true
-        confirmButton.titleLabel?.font = UIFont.MainFontSemiBold(size: 18)
+        confirmButton.titleLabel?.font = UIFont.MontserratMedium(size: 15)
         
         //forgot password Button
         backgroundOverlay.addSubview(forgotPassButton)
         forgotPassButton.anchor(top: confirmButton.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: 0, height: screenHeight * 0.01))
         forgotPassButton.setTitleColor(UIColor.FlatColor.Gray.IdleGray, for: .normal)
         forgotPassButton.setTitle("Forgot your password?", for: .normal)
-        forgotPassButton.titleLabel?.font = UIFont.MainFontRegular(size: 12)
+        forgotPassButton.titleLabel?.font = UIFont.MontserratRegular(size: 12)
         forgotPassButton.sizeToFit()
         
         //facebook Button
         backgroundOverlay.addSubview(facebookButton)
         facebookButton.anchor(top: forgotPassButton.bottomAnchor, leading: confirmButton.leadingAnchor, bottom: nil, trailing: confirmButton.trailingAnchor, padding: .init(top: screenHeight * 0.05, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: screenHeight * 0.06))
         facebookButton.backgroundColor = UIColor.FlatColor.Blue.FacebookBlue
-        facebookButton.setTitle("LOGIN WITH FACEBOOK", for: .normal)
+        facebookButton.setTitle("FACEBOOK LOGIN", for: .normal)
         facebookButton.setTitleColor(.white, for: .normal)
         facebookButton.layer.cornerRadius = 15
         facebookButton.layer.masksToBounds = true
-        facebookButton.titleLabel?.font = UIFont.MainFontSemiBold(size: 18)
+        facebookButton.titleLabel?.font = UIFont.MontserratMedium(size: 15)
         
+        //error label
+        backgroundOverlay.addSubview(errorLabel)
+        errorLabel.isHidden = true
+        errorLabel.anchor(top: nil, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: screenWidth * 0.1, bottom: screenHeight * 0.025, right: screenWidth * 0.1), size: .init(width: screenWidth * 0.8, height: screenHeight * 0.05))
+        errorLabel.font = UIFont.MontserratRegular(size: 12)
+        errorLabel.text = "Error has occured. Please try again later."
+        errorLabel.textColor = UIColor.FlatColor.Red.GoogleRed
+        errorLabel.numberOfLines = 0
     }
     
     func textFieldUI(textfield: UITextField, placeholder: String) {
         textfield.textColor = .white
-        textfield.font = UIFont.MainFontMedium(size: 16)
-        textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.FlatColor.Gray.IdleGray, NSAttributedString.Key.font: UIFont.MainFontMedium(size: 16)])
+        textfield.font = UIFont.MontserratMedium(size: 13)
+        textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.FlatColor.Gray.IdleGray, NSAttributedString.Key.font: UIFont.MontserratMedium(size: 13)])
     }
 }

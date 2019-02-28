@@ -9,22 +9,25 @@
 import UIKit
 
 extension UIFont {
-    class func MainFontUltraLight(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-UltraLight", size: size)!
-    }
-    class func MainFontThin(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-Thin", size: size)!
+    class func MainFontMedium(size: CGFloat) -> UIFont {
+        return UIFont(name: "Neogrey-Medium", size: size)!
     }
     class func MainFontRegular(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-Regular", size: size)!
+        return UIFont(name: "Neogrey", size: size)!
     }
-    class func MainFontLight(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-Light", size: size)!
+    class func MontserratLight(size: CGFloat) -> UIFont {
+        return UIFont(name: "Montserrat-Light", size: size)!
     }
-    class func MainFontMedium(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-Medium", size: size)!
+    class func MontserratMedium(size: CGFloat) -> UIFont {
+        return UIFont(name: "Montserrat-Medium", size: size)!
     }
-    class func MainFontSemiBold(size: CGFloat) -> UIFont {
-        return UIFont(name: "AppleSDGothicNeo-SemiBold", size: size)!
+    class func MontserratRegular(size: CGFloat) -> UIFont {
+        return UIFont(name: "Montserrat-Regular", size: size)!
+    }
+    class func MontserratSemiBold(size: CGFloat) -> UIFont {
+        return UIFont(name: "Montserrat-SemiBold", size: size)!
+    }
+    class func MontserratBold(size: CGFloat) -> UIFont {
+        return UIFont(name: "Montserrat-Bold", size: size)!
     }
 }
