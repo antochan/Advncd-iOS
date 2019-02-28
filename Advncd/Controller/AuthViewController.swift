@@ -9,6 +9,9 @@
 import UIKit
 import Lottie
 import WhatsNewKit
+import FirebaseAuth
+import FirebaseFirestore
+import Firebase
 
 class AuthViewController: UIViewController {
     
@@ -68,19 +71,34 @@ class AuthViewController: UIViewController {
     func registerUser(email: String, password: String, sv: UIView) {
         AuthServices.instance.registerUser(email: email, password: password) { (success) in
             if success {
-                print("user registered! Transition to BaseVC")
+                if let user = Auth.auth().currentUser {
+                    let docRef = Firestore.firestore().collection("Users").document(user.uid)
+                    docRef.getDocument { (document, error) in
+                        if let document = document, !document.exists {
+                            self.writeToDB(email: email, uid: user.uid)
+                        }
+                    }
+                }
             } else {
-                self.authView.errorLabel.isHidden = false
-                self.authView.errorLabel.text = AuthServices.instance.errorMessage
+                self.authView.displayError(message: AuthServices.instance.errorMessage)
                 UIViewController.removeSpinner(spinner: sv)
+            }
+        }
+    }
+    
+    func writeToDB(email: String, uid: String) {
+        AuthServices.instance.writeUserToDB(uid: uid, email: email) { (success) in
+            if success {
+                print("transition now!")
+            } else {
+                self.authView.displayError(message: AuthServices.instance.errorMessage)
             }
         }
     }
     
     func formChecker(sv: UIView) {
         if authView.emailTextfield.text == "" || authView.passwordTextfield.text == "" {
-            authView.errorLabel.isHidden = false
-            authView.errorLabel.text = "Please make sure to fill in both email and password!"
+            authView.displayError(message: "Please make sure to fill in both email and password.")
             UIViewController.removeSpinner(spinner: sv)
         }
     }

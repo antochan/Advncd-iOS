@@ -135,4 +135,9 @@ class AuthView: UIView {
         textfield.font = UIFont.MontserratMedium(size: 13)
         textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.FlatColor.Gray.IdleGray, NSAttributedString.Key.font: UIFont.MontserratMedium(size: 13)])
     }
+    
+    func displayError(message: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = message
+    }
 }
