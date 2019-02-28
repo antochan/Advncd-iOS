@@ -1,0 +1,6 @@
+framework module Pods_AdvncdUITests {
+  umbrella header "Pods-AdvncdUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
