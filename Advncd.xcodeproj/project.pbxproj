@@ -46,6 +46,9 @@
 		8A15BF7722293C9D001C683D /* Photos.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF7622293C9D001C683D /* Photos.json */; };
 		8A15BF7B22294010001C683D /* Gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF7A22294010001C683D /* Gallery.json */; };
 		8A15BF8122294552001C683D /* Card.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF8022294552001C683D /* Card.json */; };
+		8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */; };
+		8A4849FF2229676200362980 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FE2229676200362980 /* PageCollectionViewCell.swift */; };
+		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,9 @@
 		8A15BF7622293C9D001C683D /* Photos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Photos.json; sourceTree = "<group>"; };
 		8A15BF7A22294010001C683D /* Gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gallery.json; sourceTree = "<group>"; };
 		8A15BF8022294552001C683D /* Card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Card.json; sourceTree = "<group>"; };
+		8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
+		8A4849FE2229676200362980 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				8A15BF322227FF0D001C683D /* AuthViewController.swift */,
 				8A15BF5B222861DA001C683D /* BaseViewController.swift */,
 				8A15BF5F22287A4E001C683D /* ProfileViewController.swift */,
+				8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +248,7 @@
 				8A15BF3B222809A4001C683D /* Constants.swift */,
 				8A15BF3D222812FE001C683D /* Fonts.swift */,
 				8A15BF5522283C63001C683D /* ViewControllerExtensions.swift */,
+				8A484A0022297B5E00362980 /* FadeExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -289,6 +297,7 @@
 			children = (
 				8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */,
 				8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */,
+				8A4849FE2229676200362980 /* PageCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -478,7 +487,6 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -497,7 +505,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -576,6 +583,7 @@
 				8A15BF5A222848A7001C683D /* CollectionReferences.swift in Sources */,
 				8A15BF5C222861DA001C683D /* BaseViewController.swift in Sources */,
 				8A15BF5E222864F6001C683D /* BaseView.swift in Sources */,
+				8A4849FF2229676200362980 /* PageCollectionViewCell.swift in Sources */,
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
 				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
@@ -584,9 +592,11 @@
 				8A15BF3A22280989001C683D /* AnchorExtension.swift in Sources */,
 				8A15BF58222841D7001C683D /* AuthServices.swift in Sources */,
 				8A15BF6022287A4E001C683D /* ProfileViewController.swift in Sources */,
+				8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */,
 				8A15BF312227FDCF001C683D /* Colors.swift in Sources */,
 				8A15BF6222287EC1001C683D /* ProfileView.swift in Sources */,
 				8A15BF3C222809A4001C683D /* Constants.swift in Sources */,
+				8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

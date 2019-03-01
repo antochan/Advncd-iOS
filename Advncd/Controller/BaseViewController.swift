@@ -87,10 +87,26 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            transitionToSwiping(selectedType: 1)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
         return CGSize(width: viewWidth * 0.4, height: viewHeight * 0.275)
     }
     
+    func transitionToSwiping(selectedType: Int) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let swipingVC = storyboard.instantiateViewController(withIdentifier: "SwipingVC") as! SwipingCollectionViewController
+        swipingVC.collectionView.collectionViewLayout = layout
+        swipingVC.selectedType = selectedType
+
+        present(swipingVC, animated: true, completion: nil)
+    }
 }

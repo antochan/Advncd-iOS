@@ -50,6 +50,7 @@ extension UIColor {
         struct Gray {
             static let IdleGray = UIColor(hexString: "#A5A5A5")
             static let MatDarkGray = UIColor(hexString: "#272727")
+            static let LightIdleGray = UIColor(hexString: "#CFCFCF")
         }
         struct Red {
             static let GoogleRed = UIColor(hexString: "F53D3D")

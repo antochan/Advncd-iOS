@@ -34,10 +34,27 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
+        self.hideKeyboardWhenTappedAround()
         authView.emailTextfield.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
         authView.passwordTextfield.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
         authView.confirmButton.addTarget(self, action: #selector(confirmPressed), for: .touchUpInside)
         authView.facebookButton.addTarget(self, action: #selector(facebookPressed), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

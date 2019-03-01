@@ -6,7 +6,6 @@ target 'Advncd' do
   use_frameworks!
 
   # Pods for Advncd
-  pod 'IQKeyboardManager'
   pod 'lottie-ios'
   pod 'WhatsNewKit'
   pod 'FBSDKLoginKit'
