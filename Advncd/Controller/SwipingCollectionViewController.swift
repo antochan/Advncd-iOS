@@ -109,11 +109,10 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return confirmCell
             }
         }
-        
         else if selectedType == 2 {
             pageControl.numberOfPages = 5
             if indexPath.row == 0 {
-                isImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Detailed-1"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. Click on image below. (This is the main and largest image shown)", cell: cell)
+                isImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Detailed-1"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (This is the main and largest image shown)", cell: cell)
                 cell.addImage.image = detailedMainImage
             }
             else if indexPath.row == 1 {
@@ -121,12 +120,26 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 cell.textBox.text = detailedText
             }
             else if indexPath.row == 2 {
-                isImage(stepLabel: "Step 3.", instructionImage: #imageLiteral(resourceName: "Detailed-3"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. Click on image below. (This is the top pannel image)", cell: cell)
+                isImage(stepLabel: "Step 3.", instructionImage: #imageLiteral(resourceName: "Detailed-3"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (This is the top pannel image)", cell: cell)
             }
             else if indexPath.row == 3 {
-                isImage(stepLabel: "Step 4.", instructionImage: #imageLiteral(resourceName: "Detailed-4"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. Click on image below. (This is the bottom pannel image)", cell: cell)
+                isImage(stepLabel: "Step 4.", instructionImage: #imageLiteral(resourceName: "Detailed-4"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (This is the bottom pannel image)", cell: cell)
             }
             else if indexPath.row == 4 {
+                let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
+                confirmCell.confirmButton.addTarget(self, action: #selector(generateQR), for: .touchUpInside)
+                return confirmCell
+            }
+        }
+        else if selectedType == 3 {
+            pageControl.numberOfPages = 3
+            if indexPath.row == 0 {
+                isResume(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Resume-1"), instructionLabel: "Select a photo of yourself that you'd like to display in AR for the highlighted portion. (This is the circle)", cell: cell)
+            }
+            else if indexPath.row == 1 {
+                isImage(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Resume-2"), instructionLabel: "Select a photo of your resume so you can display in AR on the higlighted portion", cell: cell)
+            }
+            else if indexPath.row == 2 {
                 let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
                 confirmCell.confirmButton.addTarget(self, action: #selector(generateQR), for: .touchUpInside)
                 return confirmCell
@@ -161,6 +174,18 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.addImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    func isResume(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+        cell.addImage.isHidden = true
+        cell.textBox.isHidden = true
+        cell.resumeImage.isHidden = false
+        cell.stepLabel.text = stepLabel
+        cell.instructionImage.image = instructionImage
+        cell.instructionLabel.text = instructionLabel
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        cell.resumeImage.isUserInteractionEnabled = true
+        cell.resumeImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     func isText(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
         cell.textBox.isHidden = false
         cell.textBox.delegate = self
@@ -183,6 +208,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
             }
+        }
+        else if selectedType == 3 {
+            
         }
         print("generate QR code here his text: \(regularText)")
     }
@@ -243,7 +271,10 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
     // UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            regularImage = image
+            if selectedType == 1 {
+                
+            }
+            
             self.collectionView.reloadData()
         }
         dismiss(animated: true, completion: nil)
