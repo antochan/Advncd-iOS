@@ -43,7 +43,7 @@ extension UIColor {
             static let LogoGreen = UIColor(hexString: "#00D8B1")
         }
         struct Blue {
-            static let DarkBlue = UIColor(hexString: "#0B121D")
+            static let DarkBlue = UIColor(hexString: "#040d1c")
             static let FacebookBlue = UIColor(hexString: "#3B5998")
         }
         struct Gray {

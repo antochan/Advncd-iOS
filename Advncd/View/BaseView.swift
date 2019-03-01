@@ -13,10 +13,14 @@ class BaseView: UIView {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
+    //background content
+    let backgroundImage = UIImageView()
+    let backgroundOverlay = UIView()
+    
     //nav bar items
     let profileButton = UIButton()
     let cameraButton = UIButton()
-    let titleLabel = UILabel()
+    let logo = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,21 +34,28 @@ class BaseView: UIView {
     }
     
     func drawBase() {
-        self.addSubview(profileButton)
-        profileButton.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 42, left: 0, bottom: 0, right: 20), size: .init(width: screenWidth * 0.075, height: screenWidth * 0.075))
+        //Background Component
+        self.addSubview(backgroundImage)
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.image = #imageLiteral(resourceName: "background")
+        
+        self.addSubview(backgroundOverlay)
+        backgroundOverlay.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        backgroundOverlay.backgroundColor = UIColor.FlatColor.Blue.DarkBlue.withAlphaComponent(0.95)
+        
+        backgroundOverlay.addSubview(profileButton)
+        profileButton.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 42, left: 0, bottom: 0, right: 25), size: .init(width: screenWidth * 0.06, height: screenWidth * 0.06))
         profileButton.setImage(#imageLiteral(resourceName: "avatar-white"), for: .normal)
         
-        self.addSubview(cameraButton)
-        cameraButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 42, left: 20, bottom: 0, right: 0), size: .init(width: screenWidth * 0.075, height: screenWidth * 0.075))
+        backgroundOverlay.addSubview(cameraButton)
+        cameraButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 42, left: 25, bottom: 0, right: 0), size: .init(width: screenWidth * 0.06, height: screenWidth * 0.06))
         cameraButton.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
         
-        self.addSubview(titleLabel)
-        titleLabel.anchor(top: self.topAnchor, leading: cameraButton.trailingAnchor, bottom: nil, trailing: profileButton.leadingAnchor, padding: .init(top: 42, left: 12, bottom: 0, right: 12), size: .init(width: 0, height: screenWidth * 0.075))
-        titleLabel.font = UIFont.MainFontMedium(size: 35)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .center
-        titleLabel.text = "Advncd"
+        backgroundOverlay.addSubview(logo)
+        logo.frame = CGRect(x: screenWidth * 0.325, y: 0, width: screenWidth * 0.35, height: screenWidth * 0.35)
+        logo.image = #imageLiteral(resourceName: "Logo")
+
     }
     
 }

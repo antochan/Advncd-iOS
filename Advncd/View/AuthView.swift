@@ -134,6 +134,7 @@ class AuthView: UIView {
         textfield.textColor = .white
         textfield.font = UIFont.MontserratMedium(size: 13)
         textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.FlatColor.Gray.IdleGray, NSAttributedString.Key.font: UIFont.MontserratMedium(size: 13)])
+        textfield.tintColor = .white
     }
     
     func displayError(message: String) {
