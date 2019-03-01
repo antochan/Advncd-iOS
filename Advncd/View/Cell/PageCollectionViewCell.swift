@@ -18,8 +18,8 @@ class PageCollectionViewCell: UICollectionViewCell {
     let backgroundOverlay = UIView()
     
     //header
-    let cancelButton = UIButton()
-    let titleLabel = UILabel()
+//    let cancelButton = UIButton()
+//    let titleLabel = UILabel()
     let logoImage = UIImageView()
     let stepLabel = UILabel()
     
@@ -65,34 +65,23 @@ class PageCollectionViewCell: UICollectionViewCell {
     func drawPageCell() {
         
         //background component
-        
         self.addSubview(backgroundOverlay)
         backgroundOverlay.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         backgroundOverlay.backgroundColor = UIColor.FlatColor.Blue.DarkBlue.withAlphaComponent(0.95)
         
         //header component
-        backgroundOverlay.addSubview(cancelButton)
-        cancelButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 42, left: 25, bottom: 0, right: 0), size: .init(width: screenWidth * 0.06, height: screenWidth * 0.06))
-        cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
-        
-        backgroundOverlay.addSubview(titleLabel)
-        titleLabel.anchor(top: cancelButton.topAnchor, leading: self.leadingAnchor, bottom: cancelButton.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.25, bottom: -8, right: screenWidth * 0.25))
-        titleLabel.font = UIFont.MontserratSemiBold(size: 30)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textColor = .white
-        
         backgroundOverlay.addSubview(logoImage)
-        logoImage.anchor(top: cancelButton.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil, padding:.init(top: screenHeight * 0.02, left: 25, bottom: 0, right: 0), size: .init(width: screenWidth * 0.23, height: screenWidth * 0.23))
+        logoImage.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil, padding:.init(top: screenHeight * 0.055, left: 25, bottom: 0, right: 0), size: .init(width: screenWidth * 0.23, height: screenWidth * 0.23))
         logoImage.image = #imageLiteral(resourceName: "Logo")
         
         backgroundOverlay.addSubview(stepLabel)
-        stepLabel.frame = CGRect(x: screenWidth * 0.23 + 30, y: 42 + screenWidth * 0.125 + screenHeight * 0.02, width: screenWidth * 0.6, height: screenWidth * 0.115)
+        stepLabel.frame = CGRect(x: screenWidth * 0.23 + 30, y: screenHeight * 0.05 + screenWidth * 0.085, width: screenWidth * 0.6, height: screenWidth * 0.115)
         stepLabel.font = UIFont.MontserratSemiBold(size: 22)
         stepLabel.textColor = .white
         
         //instruction component
         backgroundOverlay.addSubview(instructionImage)
-        instructionImage.anchor(top: logoImage.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenHeight * 0.27))
+        instructionImage.anchor(top: logoImage.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 10, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenHeight * 0.27))
         instructionImage.image = #imageLiteral(resourceName: "Regular-1")
         
         backgroundOverlay.addSubview(instructionLabel)

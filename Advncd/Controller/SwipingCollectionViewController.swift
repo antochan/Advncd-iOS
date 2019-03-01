@@ -20,6 +20,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     
     //page control
     let pageControl = UIPageControl()
+    
+    //nav bar
+    let cancelButton = UIButton()
 
     //Regular
     var regularImage = #imageLiteral(resourceName: "Picture")
@@ -34,10 +37,18 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         imagePicker.delegate = self
         self.hideKeyboardWhenTappedAround()
         setupPageControl()
+        setupNavBar()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func setupNavBar() {
+        //header component
+        self.view.addSubview(cancelButton)
+        cancelButton.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 42, left: 25, bottom: 0, right: 0), size: .init(width: screenWidth * 0.06, height: screenWidth * 0.06))
+        cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
     }
     
     func setupPageControl() {
@@ -58,13 +69,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PageCollectionViewCell
-        cell.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         
         if selectedType == 1 {
             pageControl.numberOfPages = 2
             if indexPath.row == 0 {
                 cell.addImage.isHidden = false
-                cell.titleLabel.text = "Standard AR"
                 cell.stepLabel.text = "Step 1."
                 cell.instructionImage.image = #imageLiteral(resourceName: "Regular-1")
                 cell.instructionLabel.text = "Select the image you'd like to display in AR for the highlighted portion. Click on image below."
@@ -75,7 +85,6 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             }
             else if indexPath.row == 1 {
                 cell.textBox.isHidden = false
-                cell.titleLabel.text = "Standard AR"
                 cell.stepLabel.text = "Step 2."
                 cell.instructionImage.image = #imageLiteral(resourceName: "Regular-2")
                 cell.instructionLabel.text = "Please input the text you'd like to display in AR for the highlighted portion. Type in textbox below."
@@ -86,11 +95,16 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height * 0.94)
+        return CGSize(width: view.frame.width, height: (view.frame.height * 0.94) - screenWidth * 0.06)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        //top, left, bottom, right
+        return UIEdgeInsets(top: screenWidth * 0.07, left: 0, bottom: screenHeight * 0.06, right: 0)
     }
     
     @objc func cancelPressed() {
