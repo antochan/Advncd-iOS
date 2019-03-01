@@ -38,6 +38,14 @@
 		8A15BF5E222864F6001C683D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF5D222864F6001C683D /* BaseView.swift */; };
 		8A15BF6022287A4E001C683D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF5F22287A4E001C683D /* ProfileViewController.swift */; };
 		8A15BF6222287EC1001C683D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF6122287EC1001C683D /* ProfileView.swift */; };
+		8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */; };
+		8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */; };
+		8A15BF6B22292E35001C683D /* Resume.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF6A22292E35001C683D /* Resume.json */; };
+		8A15BF6F22293025001C683D /* Regular.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF6E22293025001C683D /* Regular.json */; };
+		8A15BF752229364A001C683D /* Details.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF742229364A001C683D /* Details.json */; };
+		8A15BF7722293C9D001C683D /* Photos.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF7622293C9D001C683D /* Photos.json */; };
+		8A15BF7B22294010001C683D /* Gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF7A22294010001C683D /* Gallery.json */; };
+		8A15BF8122294552001C683D /* Card.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF8022294552001C683D /* Card.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +103,14 @@
 		8A15BF5D222864F6001C683D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8A15BF5F22287A4E001C683D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8A15BF6122287EC1001C683D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		8A15BF6A22292E35001C683D /* Resume.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Resume.json; sourceTree = "<group>"; };
+		8A15BF6E22293025001C683D /* Regular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Regular.json; sourceTree = "<group>"; };
+		8A15BF742229364A001C683D /* Details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Details.json; sourceTree = "<group>"; };
+		8A15BF7622293C9D001C683D /* Photos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Photos.json; sourceTree = "<group>"; };
+		8A15BF7A22294010001C683D /* Gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gallery.json; sourceTree = "<group>"; };
+		8A15BF8022294552001C683D /* Card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Card.json; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +248,7 @@
 		8A15BF342227FF34001C683D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8A15BF63222911CD001C683D /* Cell */,
 				8A15BF3722280685001C683D /* AuthView.swift */,
 				8A15BF5D222864F6001C683D /* BaseView.swift */,
 				8A15BF6122287EC1001C683D /* ProfileView.swift */,
@@ -256,9 +273,24 @@
 		8A15BF5222283C45001C683D /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				8A15BF6A22292E35001C683D /* Resume.json */,
+				8A15BF742229364A001C683D /* Details.json */,
+				8A15BF7A22294010001C683D /* Gallery.json */,
+				8A15BF8022294552001C683D /* Card.json */,
+				8A15BF6E22293025001C683D /* Regular.json */,
+				8A15BF7622293C9D001C683D /* Photos.json */,
 				8A15BF5322283C4C001C683D /* Loader.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		8A15BF63222911CD001C683D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */,
+				8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EAEB3B6F3FF371880BC296C6 /* Pods */ = {
@@ -396,12 +428,19 @@
 				8A15BF5422283C4C001C683D /* Loader.json in Resources */,
 				8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */,
 				8A15BF4722283644001C683D /* NeogreyMedium.otf in Resources */,
+				8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */,
+				8A15BF6B22292E35001C683D /* Resume.json in Resources */,
 				8A15BF092227FCD7001C683D /* LaunchScreen.storyboard in Resources */,
 				8A15BF3622280562001C683D /* GoogleService-Info.plist in Resources */,
+				8A15BF6F22293025001C683D /* Regular.json in Resources */,
+				8A15BF7722293C9D001C683D /* Photos.json in Resources */,
 				8A15BF4F222836BA001C683D /* Montserrat-Light.ttf in Resources */,
+				8A15BF752229364A001C683D /* Details.json in Resources */,
 				8A15BF4D222836BA001C683D /* Montserrat-SemiBold.ttf in Resources */,
 				8A15BF4622283644001C683D /* NeogreyRegular.otf in Resources */,
+				8A15BF7B22294010001C683D /* Gallery.json in Resources */,
 				8A15BF062227FCD7001C683D /* Assets.xcassets in Resources */,
+				8A15BF8122294552001C683D /* Card.json in Resources */,
 				8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */,
 				8A15BF042227FCD5001C683D /* Main.storyboard in Resources */,
 			);
@@ -538,6 +577,7 @@
 				8A15BF5C222861DA001C683D /* BaseViewController.swift in Sources */,
 				8A15BF5E222864F6001C683D /* BaseView.swift in Sources */,
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
+				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,
 				8A15BF3822280685001C683D /* AuthView.swift in Sources */,

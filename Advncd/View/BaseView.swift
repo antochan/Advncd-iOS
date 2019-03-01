@@ -21,6 +21,10 @@ class BaseView: UIView {
     let profileButton = UIButton()
     let cameraButton = UIButton()
     let logo = UIImageView()
+    
+    //collection view
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +60,14 @@ class BaseView: UIView {
         logo.frame = CGRect(x: screenWidth * 0.325, y: 0, width: screenWidth * 0.35, height: screenWidth * 0.35)
         logo.image = #imageLiteral(resourceName: "Logo")
 
+        //collection
+        layout.sectionInset = UIEdgeInsets(top: 12, left: screenWidth * 0.075, bottom: 0, right: screenWidth * 0.075)
+        layout.minimumLineSpacing = screenWidth * 0.05
+        layout.scrollDirection = .vertical
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: screenWidth * 0.35, width: screenWidth, height: screenHeight - (screenWidth * 0.35)), collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        backgroundOverlay.addSubview(collectionView)
     }
     
 }
