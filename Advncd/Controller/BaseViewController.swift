@@ -91,6 +91,21 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.row == 0 {
             transitionToSwiping(selectedType: 1)
         }
+        else if indexPath.row == 1 {
+            transitionToSwiping(selectedType: 2)
+        }
+        else if indexPath.row == 2 {
+            transitionToSwiping(selectedType: 3)
+        }
+        else if indexPath.row == 3 {
+            transitionToSwiping(selectedType: 4)
+        }
+        else if indexPath.row == 4 {
+            transitionToSwiping(selectedType: 5)
+        }
+        else if indexPath.row == 5 {
+            transitionToSwiping(selectedType: 6)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
