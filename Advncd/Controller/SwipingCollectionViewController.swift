@@ -9,8 +9,9 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
+private let reuseId2 = "Confirm"
 
-class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -24,13 +25,15 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     //nav bar
     let cancelButton = UIButton()
 
-    //Regular
+    //Select type 1
     var regularImage = #imageLiteral(resourceName: "Picture")
+    var regularText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.collectionView!.register(PageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(ConfirmPageCollectionViewCell.self, forCellWithReuseIdentifier: reuseId2)
         collectionView.backgroundColor = UIColor.FlatColor.Blue.DarkBlue
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
@@ -61,9 +64,22 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectedType == 1 {
-            return 2
-        } else {
-            return 0
+            return 3
+        }
+        else if selectedType == 2 {
+            return 5
+        }
+        else if selectedType == 3 {
+            return 3
+        }
+        else if selectedType == 4 {
+            return 5
+        }
+        else if selectedType == 5 {
+            return 5
+        }
+        else {
+            return 3
         }
     }
 
@@ -72,9 +88,11 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         self.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         
         if selectedType == 1 {
-            pageControl.numberOfPages = 2
+            pageControl.numberOfPages = 3
             if indexPath.row == 0 {
                 cell.addImage.isHidden = false
+                cell.textBox.isHidden = true
+                cell.resumeImage.isHidden = true
                 cell.stepLabel.text = "Step 1."
                 cell.instructionImage.image = #imageLiteral(resourceName: "Regular-1")
                 cell.instructionLabel.text = "Select the image you'd like to display in AR for the highlighted portion. Click on image below."
@@ -85,9 +103,18 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             }
             else if indexPath.row == 1 {
                 cell.textBox.isHidden = false
+                cell.textBox.delegate = self
+                cell.addImage.isHidden = true
+                cell.resumeImage.isHidden = true
+                cell.textBox.text = regularText
                 cell.stepLabel.text = "Step 2."
                 cell.instructionImage.image = #imageLiteral(resourceName: "Regular-2")
                 cell.instructionLabel.text = "Please input the text you'd like to display in AR for the highlighted portion. Type in textbox below."
+            }
+            else if indexPath.row == 2 {
+                let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
+                confirmCell.confirmButton.addTarget(self, action: #selector(generateQR), for: .touchUpInside)
+                return confirmCell
             }
         }
         
@@ -107,6 +134,16 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         return UIEdgeInsets(top: screenWidth * 0.07, left: 0, bottom: screenHeight * 0.06, right: 0)
     }
     
+    @objc func generateQR() {
+        if selectedType == 1 {
+            if regularImage == #imageLiteral(resourceName: "Picture") || regularText == "" {
+                displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
+                return
+            }
+        }
+        print("generate QR code here")
+    }
+    
     @objc func cancelPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
@@ -117,6 +154,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
         present(secondViewController, animated: true, completion: nil)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text != "" {
+            regularText = textView.text
+        }
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

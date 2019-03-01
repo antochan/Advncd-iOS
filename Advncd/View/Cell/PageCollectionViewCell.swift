@@ -18,8 +18,6 @@ class PageCollectionViewCell: UICollectionViewCell {
     let backgroundOverlay = UIView()
     
     //header
-//    let cancelButton = UIButton()
-//    let titleLabel = UILabel()
     let logoImage = UIImageView()
     let stepLabel = UILabel()
     

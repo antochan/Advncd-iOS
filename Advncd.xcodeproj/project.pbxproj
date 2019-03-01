@@ -49,6 +49,8 @@
 		8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */; };
 		8A4849FF2229676200362980 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FE2229676200362980 /* PageCollectionViewCell.swift */; };
 		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
+		8A484A092229A86D00362980 /* confirm.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A484A082229A86D00362980 /* confirm.json */; };
+		8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
 		8A4849FE2229676200362980 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
+		8A484A082229A86D00362980 /* confirm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm.json; sourceTree = "<group>"; };
+		8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				8A15BF742229364A001C683D /* Details.json */,
 				8A15BF7A22294010001C683D /* Gallery.json */,
 				8A15BF8022294552001C683D /* Card.json */,
+				8A484A082229A86D00362980 /* confirm.json */,
 				8A15BF6E22293025001C683D /* Regular.json */,
 				8A15BF7622293C9D001C683D /* Photos.json */,
 				8A15BF5322283C4C001C683D /* Loader.json */,
@@ -298,6 +303,7 @@
 				8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */,
 				8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */,
 				8A4849FE2229676200362980 /* PageCollectionViewCell.swift */,
+				8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A15BF50222836BA001C683D /* Montserrat-Bold.ttf in Resources */,
+				8A484A092229A86D00362980 /* confirm.json in Resources */,
 				8A15BF5422283C4C001C683D /* Loader.json in Resources */,
 				8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */,
 				8A15BF4722283644001C683D /* NeogreyMedium.otf in Resources */,
@@ -587,6 +594,7 @@
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
 				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
+				8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,
 				8A15BF3822280685001C683D /* AuthView.swift in Sources */,
 				8A15BF3A22280989001C683D /* AnchorExtension.swift in Sources */,
