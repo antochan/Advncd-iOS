@@ -51,6 +51,10 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     var subGallery2 = #imageLiteral(resourceName: "Picture")
     var subGallery3 = #imageLiteral(resourceName: "Picture")
     
+    //selected type 6
+    var cardImage = #imageLiteral(resourceName: "Resume-picture")
+    var cardText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -152,8 +156,8 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         else if selectedType == 3 {
             pageControl.numberOfPages = 3
             if indexPath.row == 0 {
-                isResume(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Resume-1"), instructionLabel: "Select a photo of yourself that you'd like to display in AR for the highlighted portion. (This is the circle)", cell: cell)
-                cell.resumeImage.image = headShotImage
+                isCircularImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Resume-1"), instructionLabel: "Select a photo of yourself that you'd like to display in AR for the highlighted portion. (Use square image for best rendering)", cell: cell)
+                cell.circularImage.image = headShotImage
             }
             else if indexPath.row == 1 {
                 isResumeImage(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Resume-2"), instructionLabel: "Select a photo of your resume so you can display in AR on the higlighted portion", cell: cell)
@@ -213,6 +217,21 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return confirmCell
             }
         }
+        else if selectedType == 6 {
+            pageControl.numberOfPages = 3
+            if indexPath.row == 0 {
+                isCircularImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Card-1"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (Use square image for best rendering)", cell: cell)
+                cell.circularImage.image = cardImage
+            }
+            else if indexPath.row == 1 {
+                isText(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Card-2"), instructionLabel: "Please input the text you'd like to display in AR for your card. Type in textbox below.", cell: cell)
+                cell.textBox.text = cardText
+            } else if indexPath.row == 2 {
+                let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
+                confirmCell.confirmButton.addTarget(self, action: #selector(generateQR), for: .touchUpInside)
+                return confirmCell
+            }
+        }
         
         return cell
     }
@@ -246,7 +265,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.resume.isHidden = true
         cell.addImage.isHidden = false
         cell.textBox.isHidden = true
-        cell.resumeImage.isHidden = true
+        cell.circularImage.isHidden = true
         cell.stepLabel.text = stepLabel
         cell.instructionImage.image = instructionImage
         cell.instructionLabel.text = instructionLabel
@@ -255,17 +274,17 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.addImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func isResume(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+    func isCircularImage(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
         cell.resume.isHidden = true
         cell.addImage.isHidden = true
         cell.textBox.isHidden = true
-        cell.resumeImage.isHidden = false
+        cell.circularImage.isHidden = false
         cell.stepLabel.text = stepLabel
         cell.instructionImage.image = instructionImage
         cell.instructionLabel.text = instructionLabel
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        cell.resumeImage.isUserInteractionEnabled = true
-        cell.resumeImage.addGestureRecognizer(tapGestureRecognizer)
+        cell.circularImage.isUserInteractionEnabled = true
+        cell.circularImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
     //for actual resume
@@ -273,7 +292,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.resume.isHidden = false
         cell.addImage.isHidden = true
         cell.textBox.isHidden = true
-        cell.resumeImage.isHidden = true
+        cell.circularImage.isHidden = true
         cell.stepLabel.text = stepLabel
         cell.instructionImage.image = instructionImage
         cell.instructionLabel.text = instructionLabel
@@ -287,7 +306,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.textBox.isHidden = false
         cell.textBox.delegate = self
         cell.addImage.isHidden = true
-        cell.resumeImage.isHidden = true
+        cell.circularImage.isHidden = true
         cell.stepLabel.text = stepLabel
         cell.instructionImage.image = instructionImage
         cell.instructionLabel.text = instructionLabel
@@ -324,6 +343,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return
             }
         }
+        else if selectedType == 6 {
+            if cardImage == #imageLiteral(resourceName: "Resume-picture") || cardText == "" {
+                displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
+                return
+            }
+        }
         print("generate QR code")
     }
     
@@ -341,7 +366,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text != "" {
-            regularText = textView.text
+            if selectedType == 1 {
+               regularText = textView.text
+            }
+            else if selectedType == 6 {
+                cardText = textView.text
+            }
         }
     }
 
@@ -425,6 +455,11 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
                 }
                 else {
                     subGallery3 = image
+                }
+            }
+            else if selectedType == 6 {
+                if pageControl.currentPage == 0 {
+                    cardImage = image
                 }
             }
             

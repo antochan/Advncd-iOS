@@ -29,7 +29,7 @@ class PageCollectionViewCell: UICollectionViewCell {
     let addImage = UIImageView()
     
     //resume picture
-    let resumeImage = UIImageView()
+    let circularImage = UIImageView()
     let resume = UIImageView()
     
     //text view
@@ -111,12 +111,12 @@ class PageCollectionViewCell: UICollectionViewCell {
         textBox.font = UIFont.MontserratMedium(size: 15)
         textBox.textColor = .white
         
-        backgroundOverlay.addSubview(resumeImage)
-        resumeImage.isHidden = true
-        resumeImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenWidth * 0.4))
-        resumeImage.layer.cornerRadius = (screenWidth * 0.4) / 2
-        resumeImage.layer.masksToBounds = true
-        resumeImage.image = #imageLiteral(resourceName: "Resume-picture")
+        backgroundOverlay.addSubview(circularImage)
+        circularImage.isHidden = true
+        circularImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenWidth * 0.4))
+        circularImage.layer.cornerRadius = (screenWidth * 0.4) / 2
+        circularImage.layer.masksToBounds = true
+        circularImage.image = #imageLiteral(resourceName: "Resume-picture")
         
         backgroundOverlay.addSubview(resume)
         resume.isHidden = true
