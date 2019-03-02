@@ -20,6 +20,8 @@ class BaseCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        animationView.isUserInteractionEnabled = true
+        
         cardView.layer.cornerRadius = 8
         cardView.layer.masksToBounds = true
         cardView.backgroundColor = UIColor.FlatColor.Blue.MatDarkBlue.withAlphaComponent(1)
@@ -29,7 +31,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         
         self.addSubview(animationView)
         animationView.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: .init(top: 8, left: cardViewWidth * 0.05, bottom: cardViewHeight * 0.17, right: cardViewWidth * 0.05))
-        animationView.loopAnimation = true
+        animationView.loopAnimation = false
         
         self.addSubview(labelView)
         labelView.anchor(top: animationView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 8, left: 0, bottom: 0, right: 0))

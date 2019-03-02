@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AudioToolbox
 
-class BaseViewController: UIViewController {
-
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+    
     let baseView = BaseView()
     let cellId = "BaseCell"
     
@@ -24,8 +25,11 @@ class BaseViewController: UIViewController {
         baseView.collectionView.dataSource = self
         let nib = UINib(nibName: "BaseCollectionViewCell", bundle: nil)
         baseView.collectionView.register(nib, forCellWithReuseIdentifier: cellId)
-        
         baseView.profileButton.addTarget(self, action: #selector(profilePressed), for: .touchUpInside)
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        baseView.collectionView.addGestureRecognizer(lpgr)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -43,6 +47,28 @@ class BaseViewController: UIViewController {
         view.window!.layer.add(transition, forKey: kCATransition)
         present(profileVC, animated: false, completion: nil)
     }
+    
+    @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .began {
+            return
+        }
+        let p = gesture.location(in: baseView.collectionView)
+        
+        if let indexPath = baseView.collectionView.indexPathForItem(at: p) {
+            // get the cell at indexPath (the one you long pressed)
+            let cell = baseView.collectionView.cellForItem(at: indexPath) as! BaseCollectionViewCell
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            // do stuff with the cell
+            cell.animationView.loopAnimation = false
+            cell.animationView.play(toProgress: 1) { (repeated) in
+                cell.animationView.play(fromProgress: 0, toProgress: 0.5) { (success) in
+                    cell.animationView.pause()
+                }
+            }
+        } else {
+            return
+        }
+    }
 
 }
 
@@ -55,33 +81,33 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! BaseCollectionViewCell
         if indexPath.row == 0 {
-            cell.animationView.setAnimation(named: "Regular")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.11, withCompletion: nil)
+            cell.animationView.setAnimation(named: "Standard")
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Standard AR"
         }
         else if indexPath.row == 1 {
-            cell.animationView.setAnimation(named: "Details")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.1, withCompletion: nil)
+            cell.animationView.setAnimation(named: "Detailed")
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Detailed AR"
         }
         else if indexPath.row == 2 {
             cell.animationView.setAnimation(named: "Resume")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.125, withCompletion: nil)
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Resume AR"
         }
         else if indexPath.row == 3 {
             cell.animationView.setAnimation(named: "Photos")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.1, withCompletion: nil)
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Photos AR"
         }
         else if indexPath.row == 4 {
             cell.animationView.setAnimation(named: "Gallery")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.125, withCompletion: nil)
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Gallery AR"
         }
         else if indexPath.row == 5 {
             cell.animationView.setAnimation(named: "Card")
-            cell.animationView.play(fromProgress: 0, toProgress: 0.11, withCompletion: nil)
+            cell.animationView.play(fromProgress: 0.5, toProgress: 0.5, withCompletion: nil)
             cell.animationLabel.text = "Card AR"
         }
         return cell
