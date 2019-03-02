@@ -10,4 +10,5 @@ import Foundation
 
 enum CollectionReferences: String {
     case Users
+    case Texts
 }

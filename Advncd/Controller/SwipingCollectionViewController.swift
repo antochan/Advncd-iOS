@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "Cell"
 private let reuseId2 = "Confirm"
@@ -26,8 +27,8 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     let cancelButton = UIButton()
 
     //Select type 1
-    var regularImage = #imageLiteral(resourceName: "Picture")
-    var regularText = ""
+    var standardImage = #imageLiteral(resourceName: "Picture")
+    var standardText = ""
     
     //select type 2
     var detailedMainImage = #imageLiteral(resourceName: "Picture")
@@ -117,11 +118,11 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             pageControl.numberOfPages = 3
             if indexPath.row == 0 {
                 isImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Regular-2"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. Click on image below.", cell: cell)
-                cell.addImage.image = regularImage
+                cell.addImage.image = standardImage
             }
             else if indexPath.row == 1 {
                 isText(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Regular-1"), instructionLabel: "Please input the text you'd like to display in AR for the highlighted portion. Type in textbox below.", cell: cell)
-                cell.textBox.text = regularText
+                cell.textBox.text = standardText
             }
             else if indexPath.row == 2 {
                 let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
@@ -314,11 +315,16 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     
     @objc func generateQR() {
         if selectedType == 1 {
-            if regularImage == #imageLiteral(resourceName: "Picture") || regularText == "" {
+            if standardImage == #imageLiteral(resourceName: "Picture") || standardText == "" {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
             } else {
-                transitionToQR()
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: standardImage.jpegData(compressionQuality: 0.75)!, selectedType: "Standard", imageType: "Main", uuid: uuid)
+                textUpload(uuid: uuid, selectedType: "Standard", textType: "Main", text: standardText)
+                transitionToQR(uuid: uuid, selectedType: "Standard")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
         else if selectedType == 2 {
@@ -353,9 +359,39 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         }
     }
     
-    func transitionToQR() {
+    func uploadImageToFirebase(data: Data, selectedType: String, imageType: String, uuid: String) {
+        let storageRef = Storage.storage().reference().child(selectedType).child("\(uuid)_\(imageType).jpg")
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
+            if error != nil {
+                self.displayAlert(title: "Error uploading", message: "error uploading picture, please try again later or contact support")
+                return
+            } else {
+                print("upload complete")
+            }
+        }
+    }
+    
+    func textUpload(uuid: String, selectedType: String, textType: String, text: String) {
+        let reference = Firestore.firestore().collection("Texts").document("\(uuid)_\(textType)")
+        reference.setData([
+            "text": text
+        ]) { err in
+            if let err = err {
+                self.displayAlert(title: "Error uploading", message: "error uploading picture, please try again later or contact support")
+                return
+            } else {
+                print("text uploaded to ID: \(reference.documentID)")
+            }
+        }
+    }
+    
+    func transitionToQR(uuid: String, selectedType: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let qrVC = storyboard.instantiateViewController(withIdentifier: "QRCodeVC") as! QRCodeViewController
+        qrVC.uuid = uuid
+        qrVC.selectedType = selectedType
         let transition = CATransition()
         transition.duration = 0.4
         transition.type = CATransitionType.push
@@ -380,7 +416,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text != "" {
             if selectedType == 1 {
-               regularText = textView.text
+               standardText = textView.text
             }
             else if selectedType == 6 {
                 cardText = textView.text
@@ -421,7 +457,7 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if selectedType == 1 {
-                regularImage = image
+                standardImage = image
             }
             else if selectedType == 2 {
                 if pageControl.currentPage == 0 {

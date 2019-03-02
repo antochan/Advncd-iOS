@@ -62,12 +62,12 @@ class QRCodeView: UIView {
         QRCodeView.addSubview(QRCodeImage)
         QRCodeImage.anchor(top: QRCodeView.topAnchor, leading: QRCodeView.leadingAnchor, bottom: nil, trailing: QRCodeView.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.1, bottom: 0, right:  screenWidth * 0.1), size: .init(width: screenWidth * 0.4, height: screenWidth * 0.4))
         QRCodeImage.contentMode = .scaleAspectFill
+        QRCodeImage.image = #imageLiteral(resourceName: "Logo")
         
         QRCodeView.addSubview(detailsLabel)
         detailsLabel.anchor(top: QRCodeImage.bottomAnchor, leading: QRCodeImage.leadingAnchor, bottom: QRCodeView.bottomAnchor, trailing: QRCodeImage.trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0))
         detailsLabel.textColor = UIColor.FlatColor.Gray.IdleGray
         detailsLabel.numberOfLines = 0
-        detailsLabel.text = "Type: Standard AR\nCreated at: 2/23/2019"
         detailsLabel.font = UIFont.MontserratRegular(size: 11)
         detailsLabel.textAlignment = .center
         

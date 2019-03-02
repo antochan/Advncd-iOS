@@ -61,4 +61,17 @@ class AuthServices {
         }
     }
     
+    func addQRData(uid: String, qrId: String, qrType: String, date: String) {
+        reference(to: .Users).document(uid).collection("QRCodes").document(qrId).setData([
+            "qrType": qrType,
+            "date": date
+        ]) { err in
+            if let err = err {
+                self.errorMessage = err.localizedDescription
+            } else {
+                print("successfully added qr to user")
+            }
+        }
+    }
+    
 }
