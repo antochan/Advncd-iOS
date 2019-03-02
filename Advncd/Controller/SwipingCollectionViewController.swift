@@ -45,6 +45,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     var bottomLeft = #imageLiteral(resourceName: "Picture")
     var bottomRight = #imageLiteral(resourceName: "Picture")
     
+    //selected type 5
+    var galleryMain = #imageLiteral(resourceName: "Picture")
+    var subGallery1 = #imageLiteral(resourceName: "Picture")
+    var subGallery2 = #imageLiteral(resourceName: "Picture")
+    var subGallery3 = #imageLiteral(resourceName: "Picture")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -183,6 +189,30 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return confirmCell
             }
         }
+        else if selectedType == 5 {
+            pageControl.numberOfPages = 5
+            if indexPath.row == 0 {
+                isImage(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Gallery-1"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (Main Photo)", cell: cell)
+                cell.addImage.image = galleryMain
+            }
+            else if indexPath.row == 1 {
+                isImage(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Gallery-2"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (Bottom Left)", cell: cell)
+                cell.addImage.image = subGallery1
+            }
+            else if indexPath.row == 2 {
+                isImage(stepLabel: "Step 3.", instructionImage: #imageLiteral(resourceName: "Gallery-3"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (Bottom Mid)", cell: cell)
+                cell.addImage.image = subGallery2
+            }
+            else if indexPath.row == 3 {
+                isImage(stepLabel: "Step 4.", instructionImage: #imageLiteral(resourceName: "Gallery-4"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (Bottom Right)", cell: cell)
+                cell.addImage.image = subGallery3
+            }
+            else if indexPath.row == 4 {
+                let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
+                confirmCell.confirmButton.addTarget(self, action: #selector(generateQR), for: .touchUpInside)
+                return confirmCell
+            }
+        }
         
         return cell
     }
@@ -288,6 +318,12 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return
             }
         }
+        else if selectedType == 5 {
+            if galleryMain == #imageLiteral(resourceName: "Picture") || subGallery1 == #imageLiteral(resourceName: "Picture") || subGallery2 == #imageLiteral(resourceName: "Picture") || subGallery3 == #imageLiteral(resourceName: "Picture")  {
+                displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
+                return
+            }
+        }
         print("generate QR code")
     }
     
@@ -375,6 +411,20 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
                 }
                 else {
                     bottomRight = image
+                }
+            }
+            else if selectedType == 5 {
+                if pageControl.currentPage == 0 {
+                    galleryMain = image
+                }
+                else if pageControl.currentPage == 1 {
+                    subGallery1 = image
+                }
+                else if pageControl.currentPage == 2 {
+                    subGallery2 = image
+                }
+                else {
+                    subGallery3 = image
                 }
             }
             
