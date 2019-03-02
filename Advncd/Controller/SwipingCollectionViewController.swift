@@ -317,6 +317,8 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             if regularImage == #imageLiteral(resourceName: "Picture") || regularText == "" {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                transitionToQR()
             }
         }
         else if selectedType == 2 {
@@ -349,7 +351,18 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 return
             }
         }
-        print("generate QR code")
+    }
+    
+    func transitionToQR() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let qrVC = storyboard.instantiateViewController(withIdentifier: "QRCodeVC") as! QRCodeViewController
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(qrVC, animated: true, completion: nil)
     }
     
     @objc func cancelPressed() {
