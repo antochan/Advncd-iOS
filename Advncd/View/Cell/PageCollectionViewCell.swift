@@ -30,6 +30,7 @@ class PageCollectionViewCell: UICollectionViewCell {
     
     //resume picture
     let resumeImage = UIImageView()
+    let resume = UIImageView()
     
     //text view
     let textBox = UITextView()
@@ -92,7 +93,9 @@ class PageCollectionViewCell: UICollectionViewCell {
         backgroundOverlay.addSubview(addImage)
         addImage.isHidden = true
         addImage.contentMode = .scaleAspectFill
-        addImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.15, bottom: 0, right: screenWidth * 0.15), size: .init(width: screenWidth * 0.7, height: (screenWidth * 0.7) * 0.75))
+        
+        addImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.125, bottom: 0, right: screenWidth * 0.125), size: .init(width: screenWidth * 0.75, height: (screenWidth * 0.75) * 0.75))
+        
         addImage.layer.cornerRadius = 10
         addImage.layer.masksToBounds = true
         addImage.image = #imageLiteral(resourceName: "Picture")
@@ -113,6 +116,13 @@ class PageCollectionViewCell: UICollectionViewCell {
         resumeImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenWidth * 0.4))
         resumeImage.layer.cornerRadius = (screenWidth * 0.4) / 2
         resumeImage.layer.masksToBounds = true
-        resumeImage.image = #imageLiteral(resourceName: "Resume-Picture")
+        resumeImage.image = #imageLiteral(resourceName: "Resume-picture")
+        
+        backgroundOverlay.addSubview(resume)
+        resume.isHidden = true
+        resume.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.01, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: screenWidth * 0.6))
+        resume.layer.cornerRadius = 10
+        resume.layer.masksToBounds = true
+        resume.image = #imageLiteral(resourceName: "Resume-placeholder")
     }
 }

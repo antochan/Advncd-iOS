@@ -51,6 +51,7 @@
 		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
 		8A484A092229A86D00362980 /* confirm.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A484A082229A86D00362980 /* confirm.json */; };
 		8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */; };
+		8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
 		8A484A082229A86D00362980 /* confirm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm.json; sourceTree = "<group>"; };
 		8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPageCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				8A15BF3D222812FE001C683D /* Fonts.swift */,
 				8A15BF5522283C63001C683D /* ViewControllerExtensions.swift */,
 				8A484A0022297B5E00362980 /* FadeExtensions.swift */,
+				8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
 				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
+				8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */,
 				8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,
 				8A15BF3822280685001C683D /* AuthView.swift in Sources */,

@@ -35,6 +35,10 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     var detailedPannelImageOne = #imageLiteral(resourceName: "Picture")
     var detailedPannelImageTwo = #imageLiteral(resourceName: "Picture")
     
+    //select type 3
+    var headShotImage = #imageLiteral(resourceName: "Resume-picture")
+    var resumeImage = #imageLiteral(resourceName: "Resume-placeholder")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -121,9 +125,11 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             }
             else if indexPath.row == 2 {
                 isImage(stepLabel: "Step 3.", instructionImage: #imageLiteral(resourceName: "Detailed-3"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (This is the top pannel image)", cell: cell)
+                cell.addImage.image = detailedPannelImageOne
             }
             else if indexPath.row == 3 {
                 isImage(stepLabel: "Step 4.", instructionImage: #imageLiteral(resourceName: "Detailed-4"), instructionLabel: "Select the image you'd like to display in AR for the highlighted portion. (This is the bottom pannel image)", cell: cell)
+                cell.addImage.image = detailedPannelImageTwo
             }
             else if indexPath.row == 4 {
                 let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
@@ -135,9 +141,11 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             pageControl.numberOfPages = 3
             if indexPath.row == 0 {
                 isResume(stepLabel: "Step 1.", instructionImage: #imageLiteral(resourceName: "Resume-1"), instructionLabel: "Select a photo of yourself that you'd like to display in AR for the highlighted portion. (This is the circle)", cell: cell)
+                cell.resumeImage.image = headShotImage
             }
             else if indexPath.row == 1 {
-                isImage(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Resume-2"), instructionLabel: "Select a photo of your resume so you can display in AR on the higlighted portion", cell: cell)
+                isResumeImage(stepLabel: "Step 2.", instructionImage: #imageLiteral(resourceName: "Resume-2"), instructionLabel: "Select a photo of your resume so you can display in AR on the higlighted portion", cell: cell)
+                cell.resume.image = resumeImage
             }
             else if indexPath.row == 2 {
                 let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId2, for: indexPath) as! ConfirmPageCollectionViewCell
@@ -162,7 +170,20 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         return UIEdgeInsets(top: screenWidth * 0.07, left: 0, bottom: screenHeight * 0.06, right: 0)
     }
     
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.collectionView.scrollToNearestVisibleCollectionViewCell()
+        pageControl.currentPage = self.collectionView.getNearestVisibleCollectionViewCell()
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.collectionView.scrollToNearestVisibleCollectionViewCell()
+            pageControl.currentPage = self.collectionView.getNearestVisibleCollectionViewCell()
+        }
+    }
+    
     func isImage(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+        cell.resume.isHidden = true
         cell.addImage.isHidden = false
         cell.textBox.isHidden = true
         cell.resumeImage.isHidden = true
@@ -175,6 +196,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func isResume(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+        cell.resume.isHidden = true
         cell.addImage.isHidden = true
         cell.textBox.isHidden = true
         cell.resumeImage.isHidden = false
@@ -186,7 +208,22 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         cell.resumeImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    //for actual resume
+    func isResumeImage(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+        cell.resume.isHidden = false
+        cell.addImage.isHidden = true
+        cell.textBox.isHidden = true
+        cell.resumeImage.isHidden = true
+        cell.stepLabel.text = stepLabel
+        cell.instructionImage.image = instructionImage
+        cell.instructionLabel.text = instructionLabel
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        cell.resume.isUserInteractionEnabled = true
+        cell.resume.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     func isText(stepLabel: String, instructionImage: UIImage, instructionLabel: String, cell: PageCollectionViewCell) {
+        cell.resume.isHidden = true
         cell.textBox.isHidden = false
         cell.textBox.delegate = self
         cell.addImage.isHidden = true
@@ -210,7 +247,10 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             }
         }
         else if selectedType == 3 {
-            
+            if headShotImage == #imageLiteral(resourceName: "Resume-picture") || resumeImage == #imageLiteral(resourceName: "Resume-placeholder") {
+                displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
+                return
+            }
         }
         print("generate QR code here his text: \(regularText)")
     }
@@ -230,12 +270,6 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text != "" {
             regularText = textView.text
-        }
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if let indexPath = collectionView.indexPathsForVisibleItems.first {
-            pageControl.currentPage = indexPath.row
         }
     }
 
@@ -272,7 +306,26 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if selectedType == 1 {
-                
+                regularImage = image
+            }
+            else if selectedType == 2 {
+                if pageControl.currentPage == 0 {
+                    detailedMainImage = image
+                }
+                else if pageControl.currentPage == 2 {
+                    detailedPannelImageOne = image
+                }
+                else {
+                    detailedPannelImageTwo = image
+                }
+            }
+            else if selectedType == 3 {
+                if pageControl.currentPage == 0 {
+                    headShotImage = image
+                }
+                else if pageControl.currentPage == 1 {
+                    resumeImage = image
+                }
             }
             
             self.collectionView.reloadData()
