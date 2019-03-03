@@ -57,14 +57,14 @@ class QRCodeViewController: UIViewController {
                     self.displayAlert(title: "Error uploading", message: "An error has occured uploading your image. Try again later")
                     return
                 }
-                self.writeQRURL(uuid: uuid, downloadURL: downloadURL.absoluteString)
+                self.writeQRURL(uuid: uuid, downloadURL: downloadURL.absoluteString, selectedType: self.selectedType)
                 AuthServices.instance.addQRData(uid: self.currentUser!.uid, qrId: uuid, qrType: self.selectedType, date: self.dateString, downloadURL: downloadURL.absoluteString)
             }
         }
     }
     
-    func writeQRURL(uuid: String, downloadURL: String) {
-        let databaseRef = Database.database().reference().child("QR").child(uuid)
+    func writeQRURL(uuid: String, downloadURL: String, selectedType: String) {
+        let databaseRef = Database.database().reference().child("QR").child("\(uuid)_\(selectedType)")
         databaseRef.setValue(downloadURL)
     }
     
