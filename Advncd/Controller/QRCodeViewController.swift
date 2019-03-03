@@ -17,6 +17,7 @@ class QRCodeViewController: UIViewController {
     var uuid = ""
     var selectedType = ""
     let currentUser = Auth.auth().currentUser
+    var dateString = ""
     
     override func loadView() {
         self.view = qrView
@@ -37,13 +38,12 @@ class QRCodeViewController: UIViewController {
         let sv = UIViewController.displaySpinner(onView: self.view)
         let QRString = "\(uuid)_\(selectedType)"
         qrView.QRCodeImage.image = QRString.qrCode
-        uploadQRImage(data: (QRString.qrCode?.pngData())!, uuid: uuid)
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MM.dd.yyyy"
-        let dateString = formatter.string(from: date)
+        dateString = formatter.string(from: date)
         qrView.detailsLabel.text = "Type: \(selectedType)\nCreated at: \(dateString)"
-        AuthServices.instance.addQRData(uid: currentUser!.uid, qrId: uuid, qrType: selectedType, date: dateString)
+        uploadQRImage(data: (QRString.qrCode?.pngData())!, uuid: uuid)
         UIViewController.removeSpinner(spinner: sv)
     }
     
@@ -58,6 +58,7 @@ class QRCodeViewController: UIViewController {
                     return
                 }
                 self.writeQRURL(uuid: uuid, downloadURL: downloadURL.absoluteString)
+                AuthServices.instance.addQRData(uid: self.currentUser!.uid, qrId: uuid, qrType: self.selectedType, date: self.dateString, downloadURL: downloadURL.absoluteString)
             }
         }
     }

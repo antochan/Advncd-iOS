@@ -332,30 +332,71 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             if detailedText == "" || detailedMainImage == #imageLiteral(resourceName: "Picture") || detailedPannelImageOne == #imageLiteral(resourceName: "Picture") || detailedPannelImageTwo == #imageLiteral(resourceName: "Picture") {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: detailedMainImage.jpegData(compressionQuality: 0.75)!, selectedType: "Detailed", imageType: "Main", uuid: uuid)
+                uploadImageToFirebase(data: detailedPannelImageOne.jpegData(compressionQuality: 0.75)!, selectedType: "Detailed", imageType: "PannelTop", uuid: uuid)
+                uploadImageToFirebase(data: detailedPannelImageTwo.jpegData(compressionQuality: 0.75)!, selectedType: "Detailed", imageType: "PannelBottom", uuid: uuid)
+                textUpload(uuid: uuid, selectedType: "Detailed", textType: "Main", text: detailedText)
+                transitionToQR(uuid: uuid, selectedType: "Standard")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
         else if selectedType == 3 {
             if headShotImage == #imageLiteral(resourceName: "Resume-picture") || resumeImage == #imageLiteral(resourceName: "Resume-placeholder") {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: headShotImage.jpegData(compressionQuality: 0.75)!, selectedType: "Resume", imageType: "Headshot", uuid: uuid)
+                uploadImageToFirebase(data: resumeImage.jpegData(compressionQuality: 0.75)!, selectedType: "Resume", imageType: "Resume", uuid: uuid)
+                transitionToQR(uuid: uuid, selectedType: "Resume")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
         else if selectedType == 4 {
             if topLeft == #imageLiteral(resourceName: "Picture") || topRight == #imageLiteral(resourceName: "Picture") || bottomLeft == #imageLiteral(resourceName: "Picture") || bottomRight == #imageLiteral(resourceName: "Picture") {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "TopLeft", uuid: uuid)
+                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "TopRight", uuid: uuid)
+                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomLeft", uuid: uuid)
+                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomRight", uuid: uuid)
+                transitionToQR(uuid: uuid, selectedType: "Photos")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
         else if selectedType == 5 {
             if galleryMain == #imageLiteral(resourceName: "Picture") || subGallery1 == #imageLiteral(resourceName: "Picture") || subGallery2 == #imageLiteral(resourceName: "Picture") || subGallery3 == #imageLiteral(resourceName: "Picture")  {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: galleryMain.jpegData(compressionQuality: 0.75)!, selectedType: "Gallery", imageType: "Main", uuid: uuid)
+                uploadImageToFirebase(data: subGallery1.jpegData(compressionQuality: 0.75)!, selectedType: "Gallery", imageType: "BottomLeft", uuid: uuid)
+                uploadImageToFirebase(data: subGallery2.jpegData(compressionQuality: 0.75)!, selectedType: "Gallery", imageType: "BottomMid", uuid: uuid)
+                uploadImageToFirebase(data: subGallery3.jpegData(compressionQuality: 0.75)!, selectedType: "Gallery", imageType: "BottomRight", uuid: uuid)
+                transitionToQR(uuid: uuid, selectedType: "Gallery")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
         else if selectedType == 6 {
             if cardImage == #imageLiteral(resourceName: "Resume-picture") || cardText == "" {
                 displayAlert(title: "Error!", message: "We've noticed you didn't fill out everything! Please do!")
                 return
+            } else {
+                let sv = UIViewController.displaySpinner(onView: self.view)
+                let uuid = UUID().uuidString
+                uploadImageToFirebase(data: cardImage.jpegData(compressionQuality: 0.75)!, selectedType: "Card", imageType: "Main", uuid: uuid)
+                textUpload(uuid: uuid, selectedType: "Card", textType: "Main", text: detailedText)
+                transitionToQR(uuid: uuid, selectedType: "Card")
+                UIViewController.removeSpinner(spinner: sv)
             }
         }
     }
@@ -365,11 +406,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
         storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            storageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                     self.displayAlert(title: "Error uploading", message: "An error has occured uploading your image. Try again later")
-                    return
-                }
+            if let err = error {
+                self.displayAlert(title: "Error uploading", message: err.localizedDescription)
+                return
             }
         }
     }
@@ -416,6 +455,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         if textView.text != "" {
             if selectedType == 1 {
                standardText = textView.text
+            }
+            else if selectedType == 2 {
+                detailedText = textView.text
             }
             else if selectedType == 6 {
                 cardText = textView.text
