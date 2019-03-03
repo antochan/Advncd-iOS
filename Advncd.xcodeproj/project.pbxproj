@@ -40,6 +40,8 @@
 		8A15BF6222287EC1001C683D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF6122287EC1001C683D /* ProfileView.swift */; };
 		8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */; };
 		8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */; };
+		8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E6222C2ECD00FE0088 /* ARViewController.swift */; };
+		8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E8222C32A400FE0088 /* ImageExtensions.swift */; };
 		8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */; };
 		8A4849FF2229676200362980 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FE2229676200362980 /* PageCollectionViewCell.swift */; };
 		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
@@ -118,6 +120,8 @@
 		8A15BF6122287EC1001C683D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		8A4831E6222C2ECD00FE0088 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		8A4831E8222C32A400FE0088 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
 		8A4849FE2229676200362980 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				8A15BF5F22287A4E001C683D /* ProfileViewController.swift */,
 				8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */,
 				8A983B15222AE15A00980F15 /* QRCodeViewController.swift */,
+				8A4831E6222C2ECD00FE0088 /* ARViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				8A484A0022297B5E00362980 /* FadeExtensions.swift */,
 				8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */,
 				8A983B19222BB78B00980F15 /* QRConverter.swift */,
+				8A4831E8222C32A400FE0088 /* ImageExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -625,12 +631,14 @@
 				8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */,
 				8A983B20222BC4CD00980F15 /* QRServices.swift in Sources */,
 				8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */,
+				8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,
 				8A15BF3822280685001C683D /* AuthView.swift in Sources */,
 				8A983B16222AE15A00980F15 /* QRCodeViewController.swift in Sources */,
 				8A15BF3A22280989001C683D /* AnchorExtension.swift in Sources */,
 				8A983B18222AE28000980F15 /* QRCodeView.swift in Sources */,
 				8A15BF58222841D7001C683D /* AuthServices.swift in Sources */,
+				8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */,
 				8A15BF6022287A4E001C683D /* ProfileViewController.swift in Sources */,
 				8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */,
 				8A15BF312227FDCF001C683D /* Colors.swift in Sources */,

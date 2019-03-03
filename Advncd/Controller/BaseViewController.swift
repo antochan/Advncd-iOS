@@ -26,6 +26,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         let nib = UINib(nibName: "BaseCollectionViewCell", bundle: nil)
         baseView.collectionView.register(nib, forCellWithReuseIdentifier: cellId)
         baseView.profileButton.addTarget(self, action: #selector(profilePressed), for: .touchUpInside)
+        baseView.cameraButton.addTarget(self, action: #selector(cameraPressed), for: .touchUpInside)
         
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
         baseView.collectionView.addGestureRecognizer(lpgr)
@@ -46,6 +47,18 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
         present(profileVC, animated: false, completion: nil)
+    }
+    
+    @objc func cameraPressed() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ARVC = storyboard.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(ARVC, animated: false, completion: nil)
     }
     
     @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
