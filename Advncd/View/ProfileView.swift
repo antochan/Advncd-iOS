@@ -22,6 +22,12 @@ class ProfileView: UIView {
     let logoutButton = UIButton()
     let logo = UIImageView()
     
+    //table view
+    let tableView = UITableView()
+    
+    //No data label
+    let noDataLabel = UILabel()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +62,23 @@ class ProfileView: UIView {
         backgroundOverlay.addSubview(logo)
         logo.frame = CGRect(x: screenWidth * 0.325, y: 0, width: screenWidth * 0.35, height: screenWidth * 0.35)
         logo.image = #imageLiteral(resourceName: "Logo")
+        
+        //table view component
+        backgroundOverlay.addSubview(tableView)
+        tableView.anchor(top: logo.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.1, bottom: 0, right: screenWidth * 0.1))
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        
+        //no data label
+        backgroundOverlay.addSubview(noDataLabel)
+        noDataLabel.isHidden = true
+        noDataLabel.frame = CGRect(x: screenWidth * 0.1, y: screenHeight * 0.4, width: screenWidth * 0.8, height: screenHeight * 0.1)
+        noDataLabel.font = UIFont.MontserratMedium(size: 14)
+        noDataLabel.numberOfLines = 0
+        noDataLabel.text = "No QR codes saved yet!"
+        noDataLabel.textColor = UIColor.FlatColor.Gray.IdleGray
+        noDataLabel.textAlignment = .center
     }
 
 }

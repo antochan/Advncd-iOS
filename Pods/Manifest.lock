@@ -84,6 +84,9 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI/Storage (6.1.1):
+    - Firebase/Storage (~> 5.0)
+    - SDWebImage (~> 4.0)
   - GoogleAppMeasurement (5.5.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -133,6 +136,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
   - WhatsNewKit (1.1.7)
 
 DEPENDENCIES:
@@ -144,7 +150,9 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - FirebaseUI/Storage
   - lottie-ios
+  - SDWebImage
   - WhatsNewKit
 
 SPEC REPOS:
@@ -164,6 +172,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseStorage
+    - FirebaseUI
     - GoogleAppMeasurement
     - GoogleUtilities
     - "gRPC-C++"
@@ -173,6 +182,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - Protobuf
+    - SDWebImage
     - WhatsNewKit
 
 SPEC CHECKSUMS:
@@ -191,6 +201,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 6f2b93b4f7bb8416628142763c91ccc00fa04c86
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
   FirebaseStorage: 29075f874c2b3cf61e5221a62c4ceefc809e5412
+  FirebaseUI: 1345f778d53f9484f21474c7b10bba313b28a76b
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
@@ -200,8 +211,9 @@ SPEC CHECKSUMS:
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: 19436fa5ca7692dd4fb6aad69e95290891e2581c
+PODFILE CHECKSUM: e1554caa79833fdab78668be9827ae4654ef5af1
 
 COCOAPODS: 1.5.3

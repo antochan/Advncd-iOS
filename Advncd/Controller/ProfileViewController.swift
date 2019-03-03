@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import SDWebImage
+import FirebaseUI
 
 class ProfileViewController: UIViewController {
     
     let profileView = ProfileView()
+    let currentUser = Auth.auth().currentUser!
     
     override func loadView() {
         self.view = profileView
@@ -22,6 +25,15 @@ class ProfileViewController: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         profileView.backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
         profileView.logoutButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
+        profileView.tableView.delegate = self
+        profileView.tableView.dataSource = self
+        let nib = UINib(nibName: "QRCodeTableViewCell", bundle: nil)
+        profileView.tableView.register(nib, forCellReuseIdentifier: "QRCell")
+        profileView.tableView.backgroundColor = .clear
+        profileView.tableView.separatorStyle = .none
+        profileView.tableView.tableFooterView = UIView()
+        
+        getUserQRCodes(uid: currentUser.uid)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -60,5 +72,48 @@ class ProfileViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func getUserQRCodes(uid: String) {
+        QRServices.instance.userQRCodes.removeAll()
+        QRServices.instance.getUserQRCodes(uid: uid) { (success) in
+            if success {
+                self.profileView.tableView.reloadData()
+            } else {
+                self.displayAlert(title: "Error", message: "There was an error getting your QR codes! Try again later!")
+            }
+        }
+    }
 
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = QRServices.instance.userQRCodes.count
+        if count == 0 {
+            profileView.noDataLabel.isHidden = false
+            return 0
+        } else {
+            profileView.noDataLabel.isHidden = true
+            return QRServices.instance.userQRCodes.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QRCell", for: indexPath as IndexPath) as! QRCodeTableViewCell
+        cell.selectionStyle = .none
+        let userQRCodes = QRServices.instance.userQRCodes
+        let date = userQRCodes[indexPath.row].date
+        let qrType = userQRCodes[indexPath.row].qrType
+        let downloadURL = userQRCodes[indexPath.row].downloadURL
+        let httpsReference = Storage.storage().reference(forURL: downloadURL)
+        cell.QRImageView.sd_setImage(with: httpsReference, placeholderImage: #imageLiteral(resourceName: "QRcode"))
+        cell.detailsLabel.text = "Type: \(qrType)\nCreated at: \(date)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.frame.size.height * 0.175
+    }
+    
 }

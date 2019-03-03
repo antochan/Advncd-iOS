@@ -45,12 +45,6 @@ extension UIViewController {
     func transitionToBaseVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
-        let transition = CATransition()
-        transition.duration = 0.4
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
         present(secondViewController, animated: true, completion: nil)
     }
 }

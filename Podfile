@@ -16,6 +16,8 @@ target 'Advncd' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'FirebaseUI/Storage'
+  pod 'SDWebImage'
  
 
   target 'AdvncdTests' do

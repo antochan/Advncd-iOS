@@ -64,10 +64,8 @@ class QRCodeViewController: UIViewController {
     }
     
     func writeQRURL(uuid: String, downloadURL: String) {
-        let databaseRef = Database.database().reference().child("QR")
-        databaseRef.setValue([
-            uuid:downloadURL
-            ])
+        let databaseRef = Database.database().reference().child("QR").child(uuid)
+        databaseRef.setValue(downloadURL)
     }
     
     @objc func confirmPressed() {
