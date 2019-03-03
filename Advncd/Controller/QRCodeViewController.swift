@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class QRCodeViewController: UIViewController {
     
@@ -51,13 +52,21 @@ class QRCodeViewController: UIViewController {
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
         storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            if error != nil {
-                self.displayAlert(title: "Error uploading", message: "error uploading picture, please try again later or contact support")
-                return
-            } else {
-                print("upload complete")
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    self.displayAlert(title: "Error uploading", message: "An error has occured uploading your image. Try again later")
+                    return
+                }
+                self.writeQRURL(uuid: uuid, downloadURL: downloadURL.absoluteString)
             }
         }
+    }
+    
+    func writeQRURL(uuid: String, downloadURL: String) {
+        let databaseRef = Database.database().reference().child("QR")
+        databaseRef.setValue([
+            uuid:downloadURL
+            ])
     }
     
     @objc func confirmPressed() {

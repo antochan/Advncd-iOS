@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 private let reuseIdentifier = "Cell"
 private let reuseId2 = "Confirm"
@@ -364,11 +365,11 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
         storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            if error != nil {
-                self.displayAlert(title: "Error uploading", message: "error uploading picture, please try again later or contact support")
-                return
-            } else {
-                print("upload complete")
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                     self.displayAlert(title: "Error uploading", message: "An error has occured uploading your image. Try again later")
+                    return
+                }
             }
         }
     }
@@ -379,10 +380,8 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
             "text": text
         ]) { err in
             if let err = err {
-                self.displayAlert(title: "Error uploading", message: "error uploading picture, please try again later or contact support")
+                self.displayAlert(title: "Error uploading", message: err.localizedDescription)
                 return
-            } else {
-                print("text uploaded to ID: \(reference.documentID)")
             }
         }
     }
