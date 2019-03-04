@@ -45,8 +45,8 @@
 		8A198EF3222DD74F00241007 /* Guidance-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EEE222DD74F00241007 /* Guidance-2.json */; };
 		8A198EF5222DD74F00241007 /* Guidance-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF0222DD74F00241007 /* Guidance-3.json */; };
 		8A198EF6222DD74F00241007 /* Guidance-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF1222DD74F00241007 /* Guidance-4.json */; };
-		8A198EFB222DDDDE00241007 /* Guidance-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EFA222DDDDE00241007 /* Guidance-0.json */; };
 		8A198EFF222DDFA000241007 /* Guidance-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EFE222DDFA000241007 /* Guidance-1.json */; };
+		8A198F01222DE79400241007 /* Guidance-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198F00222DE79400241007 /* Guidance-0.json */; };
 		8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E6222C2ECD00FE0088 /* ARViewController.swift */; };
 		8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E8222C32A400FE0088 /* ImageExtensions.swift */; };
 		8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EA222D37CF00FE0088 /* StandardNode.swift */; };
@@ -138,8 +138,8 @@
 		8A198EEE222DD74F00241007 /* Guidance-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-2.json"; sourceTree = "<group>"; };
 		8A198EF0222DD74F00241007 /* Guidance-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-3.json"; sourceTree = "<group>"; };
 		8A198EF1222DD74F00241007 /* Guidance-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-4.json"; sourceTree = "<group>"; };
-		8A198EFA222DDDDE00241007 /* Guidance-0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Guidance-0.json"; path = "../../../../../Desktop/Guidance-0.json"; sourceTree = "<group>"; };
 		8A198EFE222DDFA000241007 /* Guidance-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-1.json"; sourceTree = "<group>"; };
+		8A198F00222DE79400241007 /* Guidance-0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Guidance-0.json"; path = "../../../../../Desktop/Advncd/Guidance-0.json"; sourceTree = "<group>"; };
 		8A4831E6222C2ECD00FE0088 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		8A4831E8222C32A400FE0088 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		8A4831EA222D37CF00FE0088 /* StandardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNode.swift; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 		8A198EED222DD74200241007 /* Guidance Animation */ = {
 			isa = PBXGroup;
 			children = (
-				8A198EFA222DDDDE00241007 /* Guidance-0.json */,
+				8A198F00222DE79400241007 /* Guidance-0.json */,
 				8A198EFE222DDFA000241007 /* Guidance-1.json */,
 				8A198EEE222DD74F00241007 /* Guidance-2.json */,
 				8A198EF0222DD74F00241007 /* Guidance-3.json */,
@@ -548,7 +548,7 @@
 				8A983B0E222AA96300980F15 /* Resume.json in Resources */,
 				8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */,
 				8A15BF042227FCD5001C683D /* Main.storyboard in Resources */,
-				8A198EFB222DDDDE00241007 /* Guidance-0.json in Resources */,
+				8A198F01222DE79400241007 /* Guidance-0.json in Resources */,
 				8A983B14222AB1BD00980F15 /* Card.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
