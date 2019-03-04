@@ -19,7 +19,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        showGuidance()
+        if UserDefaults.standard.bool(forKey: "Guidance") == false {
+            showGuidance()
+        }
     }
     
     override func viewDidLoad() {

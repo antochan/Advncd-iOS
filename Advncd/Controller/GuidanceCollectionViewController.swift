@@ -106,6 +106,7 @@ class GuidanceCollectionViewController: UICollectionViewController, UICollection
         transition.subtype = CATransitionSubtype.fromLeft
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
+        UserDefaults.standard.set(true, forKey: "Guidance")
         present(secondViewController, animated: true, completion: nil)
     }
     
