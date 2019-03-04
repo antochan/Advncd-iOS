@@ -42,7 +42,10 @@
 		8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */; };
 		8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E6222C2ECD00FE0088 /* ARViewController.swift */; };
 		8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E8222C32A400FE0088 /* ImageExtensions.swift */; };
-		8A4831EB222D37CF00FE0088 /* NodeRenderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EA222D37CF00FE0088 /* NodeRenderExtension.swift */; };
+		8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EA222D37CF00FE0088 /* StandardNode.swift */; };
+		8A4831ED222D813700FE0088 /* DetailedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EC222D813700FE0088 /* DetailedNode.swift */; };
+		8A4831EF222D8C7500FE0088 /* ResumeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EE222D8C7500FE0088 /* ResumeNode.swift */; };
+		8A4831F1222DA97000FE0088 /* PhotosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831F0222DA97000FE0088 /* PhotosNode.swift */; };
 		8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */; };
 		8A4849FF2229676200362980 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4849FE2229676200362980 /* PageCollectionViewCell.swift */; };
 		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
@@ -123,7 +126,10 @@
 		8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		8A4831E6222C2ECD00FE0088 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		8A4831E8222C32A400FE0088 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
-		8A4831EA222D37CF00FE0088 /* NodeRenderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeRenderExtension.swift; sourceTree = "<group>"; };
+		8A4831EA222D37CF00FE0088 /* StandardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNode.swift; sourceTree = "<group>"; };
+		8A4831EC222D813700FE0088 /* DetailedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNode.swift; sourceTree = "<group>"; };
+		8A4831EE222D8C7500FE0088 /* ResumeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeNode.swift; sourceTree = "<group>"; };
+		8A4831F0222DA97000FE0088 /* PhotosNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosNode.swift; sourceTree = "<group>"; };
 		8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
 		8A4849FE2229676200362980 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
@@ -282,7 +288,10 @@
 				8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */,
 				8A983B19222BB78B00980F15 /* QRConverter.swift */,
 				8A4831E8222C32A400FE0088 /* ImageExtensions.swift */,
-				8A4831EA222D37CF00FE0088 /* NodeRenderExtension.swift */,
+				8A4831EA222D37CF00FE0088 /* StandardNode.swift */,
+				8A4831EC222D813700FE0088 /* DetailedNode.swift */,
+				8A4831EE222D8C7500FE0088 /* ResumeNode.swift */,
+				8A4831F0222DA97000FE0088 /* PhotosNode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -632,8 +641,11 @@
 				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
 				8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */,
-				8A4831EB222D37CF00FE0088 /* NodeRenderExtension.swift in Sources */,
+				8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */,
+				8A4831ED222D813700FE0088 /* DetailedNode.swift in Sources */,
+				8A4831EF222D8C7500FE0088 /* ResumeNode.swift in Sources */,
 				8A983B20222BC4CD00980F15 /* QRServices.swift in Sources */,
+				8A4831F1222DA97000FE0088 /* PhotosNode.swift in Sources */,
 				8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */,
 				8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */,
 				8A15BF332227FF0D001C683D /* AuthViewController.swift in Sources */,

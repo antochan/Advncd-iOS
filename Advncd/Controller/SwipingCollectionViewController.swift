@@ -339,7 +339,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 uploadImageToFirebase(data: detailedPannelImageOne.jpegData(compressionQuality: 0.75)!, selectedType: "Detailed", imageType: "PannelTop", uuid: uuid)
                 uploadImageToFirebase(data: detailedPannelImageTwo.jpegData(compressionQuality: 0.75)!, selectedType: "Detailed", imageType: "PannelBottom", uuid: uuid)
                 textUpload(uuid: uuid, selectedType: "Detailed", textType: "Main", text: detailedText)
-                transitionToQR(uuid: uuid, selectedType: "Standard")
+                transitionToQR(uuid: uuid, selectedType: "Detailed")
                 UIViewController.removeSpinner(spinner: sv)
             }
         }
@@ -364,9 +364,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 let sv = UIViewController.displaySpinner(onView: self.view)
                 let uuid = UUID().uuidString
                 uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "TopLeft", uuid: uuid)
-                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "TopRight", uuid: uuid)
-                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomLeft", uuid: uuid)
-                uploadImageToFirebase(data: topLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomRight", uuid: uuid)
+                uploadImageToFirebase(data: topRight.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "TopRight", uuid: uuid)
+                uploadImageToFirebase(data: bottomLeft.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomLeft", uuid: uuid)
+                uploadImageToFirebase(data: bottomRight.jpegData(compressionQuality: 0.75)!, selectedType: "Photos", imageType: "BottomRight", uuid: uuid)
                 transitionToQR(uuid: uuid, selectedType: "Photos")
                 UIViewController.removeSpinner(spinner: sv)
             }

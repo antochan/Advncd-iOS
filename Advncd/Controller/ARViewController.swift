@@ -34,6 +34,7 @@ class ARViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
         let scene = SCNScene()
         sceneView.delegate = self
         sceneView.scene = scene
@@ -41,9 +42,12 @@ class ARViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func getQRData() {
@@ -80,6 +84,15 @@ extension ARViewController: ARSCNViewDelegate {
             
             if selectedType == "Standard" {
                 return node.RegularARNode(uuid: qrId, selectedType: selectedType)
+            }
+            else if selectedType == "Detailed" {
+                return node.DetailedNodeAR(uuid: qrId, selectedType: selectedType)
+            }
+            else if selectedType == "Resume" {
+                return node.ResumeNode(uuid: qrId, selectedType: selectedType)
+            }
+            else if selectedType == "Photos" {
+                return node.PhotosNode(uuid: qrId, selectedType: selectedType)
             }
         }
         return nil
