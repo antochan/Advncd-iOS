@@ -14,6 +14,7 @@ import FirebaseUI
 import FirebaseDatabase
 
 extension SCNNode {
+    
     func RegularARNode(uuid: String, selectedType: String) -> SCNNode {
         let backgroundPlane = SCNPlane(width: 0.21, height: 0.3)
         backgroundPlane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
