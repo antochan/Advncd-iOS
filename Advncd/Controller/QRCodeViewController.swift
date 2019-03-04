@@ -58,7 +58,6 @@ class QRCodeViewController: UIViewController {
                     return
                 }
                 self.writeQRURL(uuid: uuid, downloadURL: downloadURL.absoluteString, selectedType: self.selectedType)
-                AuthServices.instance.addQRData(uid: self.currentUser!.uid, qrId: uuid, qrType: self.selectedType, date: self.dateString, downloadURL: downloadURL.absoluteString)
             }
         }
     }

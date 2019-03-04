@@ -62,7 +62,6 @@ class QRServices {
                 if self.downloadURLs.contains(value) == false {
                     self.downloadURLs.insert(value)
                     let qrImage = UIImage(url: URL(string: value))
-                    print(qrImage)
                     let qrCiImage = CIImage(image: qrImage!)
                     let qrCGImage = self.convertCIImageToCGImage(inputImage: qrCiImage!)
                     let qrARImage = ARReferenceImage(qrCGImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.2)

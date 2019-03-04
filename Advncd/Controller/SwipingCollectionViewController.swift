@@ -406,11 +406,19 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
         storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            if let err = error {
-                self.displayAlert(title: "Error uploading", message: err.localizedDescription)
-                return
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    self.displayAlert(title: "Error uploading", message: "An error has occured uploading your image. Try again later")
+                    return
+                }
+                self.writeImageURL(uuid: uuid, imageType: imageType, downloadURL: downloadURL.absoluteString)
             }
         }
+    }
+    
+    func writeImageURL(uuid: String, imageType: String, downloadURL: String) {
+        let databaseRef = Database.database().reference().child("Images").child("\(uuid)_\(imageType)")
+        databaseRef.setValue(downloadURL)
     }
     
     func textUpload(uuid: String, selectedType: String, textType: String, text: String) {
