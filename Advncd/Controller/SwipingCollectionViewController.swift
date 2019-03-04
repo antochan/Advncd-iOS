@@ -394,7 +394,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
                 let sv = UIViewController.displaySpinner(onView: self.view)
                 let uuid = UUID().uuidString
                 uploadImageToFirebase(data: cardImage.jpegData(compressionQuality: 0.75)!, selectedType: "Card", imageType: "Main", uuid: uuid)
-                textUpload(uuid: uuid, selectedType: "Card", textType: "Main", text: detailedText)
+                textUpload(uuid: uuid, selectedType: "Card", textType: "Main", text: cardText)
                 transitionToQR(uuid: uuid, selectedType: "Card")
                 UIViewController.removeSpinner(spinner: sv)
             }

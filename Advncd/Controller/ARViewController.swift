@@ -97,6 +97,9 @@ extension ARViewController: ARSCNViewDelegate {
             else if selectedType == "Gallery" {
                 return node.GalleryNode(uuid: qrId, selectedType: selectedType)
             }
+            else if selectedType == "Card" {
+                return node.CardNode(uuid: qrId, selectedType: selectedType)
+            }
         }
         return nil
     }
