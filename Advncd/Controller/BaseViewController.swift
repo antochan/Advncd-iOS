@@ -18,6 +18,10 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.view = baseView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        showGuidance()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -167,5 +171,20 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
         present(swipingVC, animated: true, completion: nil)
+    }
+    
+    func showGuidance() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let guidanceVC = storyboard.instantiateViewController(withIdentifier: "GuidanceVC") as! GuidanceCollectionViewController
+        guidanceVC.collectionView.collectionViewLayout = layout
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(guidanceVC, animated: true, completion: nil)
     }
 }

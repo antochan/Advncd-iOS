@@ -40,6 +40,13 @@
 		8A15BF6222287EC1001C683D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF6122287EC1001C683D /* ProfileView.swift */; };
 		8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */; };
 		8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */; };
+		8A198EEA222DD52F00241007 /* GuidanceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A198EE9222DD52F00241007 /* GuidanceCollectionViewController.swift */; };
+		8A198EEC222DD56800241007 /* GuidanceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A198EEB222DD56800241007 /* GuidanceCollectionViewCell.swift */; };
+		8A198EF3222DD74F00241007 /* Guidance-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EEE222DD74F00241007 /* Guidance-2.json */; };
+		8A198EF5222DD74F00241007 /* Guidance-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF0222DD74F00241007 /* Guidance-3.json */; };
+		8A198EF6222DD74F00241007 /* Guidance-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF1222DD74F00241007 /* Guidance-4.json */; };
+		8A198EFB222DDDDE00241007 /* Guidance-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EFA222DDDDE00241007 /* Guidance-0.json */; };
+		8A198EFF222DDFA000241007 /* Guidance-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EFE222DDFA000241007 /* Guidance-1.json */; };
 		8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E6222C2ECD00FE0088 /* ARViewController.swift */; };
 		8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E8222C32A400FE0088 /* ImageExtensions.swift */; };
 		8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EA222D37CF00FE0088 /* StandardNode.swift */; };
@@ -126,6 +133,13 @@
 		8A15BF6122287EC1001C683D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		8A198EE9222DD52F00241007 /* GuidanceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceCollectionViewController.swift; sourceTree = "<group>"; };
+		8A198EEB222DD56800241007 /* GuidanceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A198EEE222DD74F00241007 /* Guidance-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-2.json"; sourceTree = "<group>"; };
+		8A198EF0222DD74F00241007 /* Guidance-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-3.json"; sourceTree = "<group>"; };
+		8A198EF1222DD74F00241007 /* Guidance-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-4.json"; sourceTree = "<group>"; };
+		8A198EFA222DDDDE00241007 /* Guidance-0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Guidance-0.json"; path = "../../../../../Desktop/Guidance-0.json"; sourceTree = "<group>"; };
+		8A198EFE222DDFA000241007 /* Guidance-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-1.json"; sourceTree = "<group>"; };
 		8A4831E6222C2ECD00FE0088 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		8A4831E8222C32A400FE0088 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		8A4831EA222D37CF00FE0088 /* StandardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNode.swift; sourceTree = "<group>"; };
@@ -253,6 +267,7 @@
 				8A15BF322227FF0D001C683D /* AuthViewController.swift */,
 				8A15BF5B222861DA001C683D /* BaseViewController.swift */,
 				8A15BF5F22287A4E001C683D /* ProfileViewController.swift */,
+				8A198EE9222DD52F00241007 /* GuidanceCollectionViewController.swift */,
 				8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */,
 				8A983B15222AE15A00980F15 /* QRCodeViewController.swift */,
 				8A4831E6222C2ECD00FE0088 /* ARViewController.swift */,
@@ -326,6 +341,7 @@
 		8A15BF5222283C45001C683D /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				8A198EED222DD74200241007 /* Guidance Animation */,
 				8A983B07222A9FD100980F15 /* Standard.json */,
 				8A983B09222AA5DF00980F15 /* Detailed.json */,
 				8A983B11222AAED300980F15 /* Gallery.json */,
@@ -343,12 +359,25 @@
 			children = (
 				8A15BF64222911EC001C683D /* BaseCollectionViewCell.swift */,
 				8A15BF65222911EC001C683D /* BaseCollectionViewCell.xib */,
+				8A198EEB222DD56800241007 /* GuidanceCollectionViewCell.swift */,
 				8A4849FE2229676200362980 /* PageCollectionViewCell.swift */,
 				8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */,
 				8A983B1B222BBC3000980F15 /* QRCodeTableViewCell.swift */,
 				8A983B1C222BBC3000980F15 /* QRCodeTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8A198EED222DD74200241007 /* Guidance Animation */ = {
+			isa = PBXGroup;
+			children = (
+				8A198EFA222DDDDE00241007 /* Guidance-0.json */,
+				8A198EFE222DDFA000241007 /* Guidance-1.json */,
+				8A198EEE222DD74F00241007 /* Guidance-2.json */,
+				8A198EF0222DD74F00241007 /* Guidance-3.json */,
+				8A198EF1222DD74F00241007 /* Guidance-4.json */,
+			);
+			path = "Guidance Animation";
 			sourceTree = "<group>";
 		};
 		8A4831F4222DBBFE00FE0088 /* Nodes */ = {
@@ -498,9 +527,11 @@
 				8A15BF50222836BA001C683D /* Montserrat-Bold.ttf in Resources */,
 				8A983B1E222BBC3000980F15 /* QRCodeTableViewCell.xib in Resources */,
 				8A484A092229A86D00362980 /* confirm.json in Resources */,
+				8A198EFF222DDFA000241007 /* Guidance-1.json in Resources */,
 				8A15BF5422283C4C001C683D /* Loader.json in Resources */,
 				8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */,
 				8A15BF4722283644001C683D /* NeogreyMedium.otf in Resources */,
+				8A198EF6222DD74F00241007 /* Guidance-4.json in Resources */,
 				8A983B0A222AA5DF00980F15 /* Detailed.json in Resources */,
 				8A15BF67222911EC001C683D /* BaseCollectionViewCell.xib in Resources */,
 				8A15BF092227FCD7001C683D /* LaunchScreen.storyboard in Resources */,
@@ -510,11 +541,14 @@
 				8A983B08222A9FD100980F15 /* Standard.json in Resources */,
 				8A15BF4D222836BA001C683D /* Montserrat-SemiBold.ttf in Resources */,
 				8A983B10222AAC0F00980F15 /* Photos.json in Resources */,
+				8A198EF5222DD74F00241007 /* Guidance-3.json in Resources */,
 				8A15BF4622283644001C683D /* NeogreyRegular.otf in Resources */,
+				8A198EF3222DD74F00241007 /* Guidance-2.json in Resources */,
 				8A15BF062227FCD7001C683D /* Assets.xcassets in Resources */,
 				8A983B0E222AA96300980F15 /* Resume.json in Resources */,
 				8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */,
 				8A15BF042227FCD5001C683D /* Main.storyboard in Resources */,
+				8A198EFB222DDDDE00241007 /* Guidance-0.json in Resources */,
 				8A983B14222AB1BD00980F15 /* Card.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,9 +687,11 @@
 				8A983B1D222BBC3000980F15 /* QRCodeTableViewCell.swift in Sources */,
 				8A15BF3E222812FE001C683D /* Fonts.swift in Sources */,
 				8A15BF66222911EC001C683D /* BaseCollectionViewCell.swift in Sources */,
+				8A198EEA222DD52F00241007 /* GuidanceCollectionViewController.swift in Sources */,
 				8A15BEFF2227FCD5001C683D /* AppDelegate.swift in Sources */,
 				8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */,
 				8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */,
+				8A198EEC222DD56800241007 /* GuidanceCollectionViewCell.swift in Sources */,
 				8A4831ED222D813700FE0088 /* DetailedNode.swift in Sources */,
 				8A4831EF222D8C7500FE0088 /* ResumeNode.swift in Sources */,
 				8A983B20222BC4CD00980F15 /* QRServices.swift in Sources */,
