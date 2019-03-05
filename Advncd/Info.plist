@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Save your QR Code</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>For your custom AR experience!</string>
-	<key>NSCameraUsageDescription</key>
-	<string>For your custom AR experience!</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -46,6 +40,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>For your custom AR experience!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For your custom AR experience!</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save your QR Code</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NeogreyMedium.otf</string>

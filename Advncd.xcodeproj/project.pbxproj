@@ -491,6 +491,11 @@
 				TargetAttributes = {
 					8A15BEFA2227FCD5001C683D = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					8A15BF0E2227FCD7001C683D = {
 						CreatedOnToolsVersion = 10.1;
@@ -903,7 +908,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Advncd;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Advncd-AR";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -922,7 +927,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Advncd;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Advncd-AR";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
