@@ -19,7 +19,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.bool(forKey: "Guidance") == false {
+        if isAppAlreadyLaunchedOnce() == false {
             showGuidance()
         }
     }
@@ -41,6 +41,18 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func isAppAlreadyLaunchedOnce() -> Bool {
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
+            print("App already launched")
+            return true
+        } else {
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
     }
     
     @objc func profilePressed() {

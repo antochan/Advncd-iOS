@@ -18,6 +18,7 @@ target 'Advncd' do
   pod 'Firebase/Firestore'
   pod 'FirebaseUI/Storage'
   pod 'SDWebImage'
+  pod 'UICircularProgressRing'
  
 
   target 'AdvncdTests' do

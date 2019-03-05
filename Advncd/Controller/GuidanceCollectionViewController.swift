@@ -18,7 +18,7 @@ class GuidanceCollectionViewController: UICollectionViewController, UICollection
     let guidanceAnimationName = ["Guidance-0","Guidance-1","Guidance-2","Guidance-3","Guidance-4"]
     let guidanceTitle = ["Watch The Animation!", "Upload Anything!", "Generate your QR Code", "Scan the QR Code!", "Share with Anyone!"]
     let guidanceDescriptions = ["Click and hold on each image to watch how the AR will be displayed in animation!",
-                                "Follow the steps and upload your images and texts to populate your own custom AR experience!",
+                                "Follow the steps and upload your images and texts to populate your own custom AR experience! For photos please use a ratio of 10 : 7 for best quality :)",
                                 "You will generate a QR code once you've completed all the steps.",
                                 "Click on the camera icon on the homepage to scan your own QR code or even scan what your friend's QR Code!",
                                 "All QR Codes created on the app will be scannable so feel free to share your creation with your friends and family! Enjoy! :)"]

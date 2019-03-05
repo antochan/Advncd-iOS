@@ -139,6 +139,7 @@ PODS:
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
+  - UICircularProgressRing (5.1.0)
   - WhatsNewKit (1.1.7)
 
 DEPENDENCIES:
@@ -153,6 +154,7 @@ DEPENDENCIES:
   - FirebaseUI/Storage
   - lottie-ios
   - SDWebImage
+  - UICircularProgressRing
   - WhatsNewKit
 
 SPEC REPOS:
@@ -183,6 +185,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SDWebImage
+    - UICircularProgressRing
     - WhatsNewKit
 
 SPEC CHECKSUMS:
@@ -212,8 +215,9 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  UICircularProgressRing: 988932dfcfef6a19b645e4eb8c37145e678e57f2
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: e1554caa79833fdab78668be9827ae4654ef5af1
+PODFILE CHECKSUM: 1bb6e38db14edf6b0d72cfbb50d0d0aba2ddea46
 
 COCOAPODS: 1.5.3
