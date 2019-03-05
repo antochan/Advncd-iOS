@@ -150,6 +150,21 @@
             </objects>
             <point key="canvasLocation" x="1626" y="-406"/>
         </scene>
+        <!--Details View Controller-->
+        <scene sceneID="lYq-04-0Dl">
+            <objects>
+                <viewController storyboardIdentifier="QRDetailsVC" id="G4X-xc-W2n" customClass="QRDetailsViewController" customModule="Advncd" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="68I-Kk-gdd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="q4h-Gx-7Wb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1B-Zy-oES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2409" y="99"/>
+        </scene>
         <!--Swiping Collection View Controller-->
         <scene sceneID="y9b-b9-wUa">
             <objects>
@@ -197,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQc-6R-DJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2420" y="288"/>
+            <point key="canvasLocation" x="2410" y="824"/>
         </scene>
     </scenes>
     <resources>

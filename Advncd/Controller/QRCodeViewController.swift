@@ -75,6 +75,7 @@ class QRCodeViewController: UIViewController {
     
     @objc func saveImage() {
         UIImageWriteToSavedPhotosAlbum(qrView.QRCodeImage.image!, nil, nil, nil)
+        displayAlert(title: "Saved Image!", message: "Your QR code is saved to your phone! Get creative and enjoy! :)")
     }
     
 }

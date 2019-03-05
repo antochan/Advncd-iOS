@@ -60,6 +60,7 @@
 		8A484A0122297B5E00362980 /* FadeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0022297B5E00362980 /* FadeExtensions.swift */; };
 		8A484A092229A86D00362980 /* confirm.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A484A082229A86D00362980 /* confirm.json */; };
 		8A484A0B2229A8A600362980 /* ConfirmPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */; };
+		8A53CAF3222EAAB8006B2D66 /* QRDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53CAF2222EAAB8006B2D66 /* QRDetailsViewController.swift */; };
 		8A983B02222A7D3800980F15 /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */; };
 		8A983B08222A9FD100980F15 /* Standard.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A983B07222A9FD100980F15 /* Standard.json */; };
 		8A983B0A222AA5DF00980F15 /* Detailed.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A983B09222AA5DF00980F15 /* Detailed.json */; };
@@ -153,6 +154,7 @@
 		8A484A0022297B5E00362980 /* FadeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeExtensions.swift; sourceTree = "<group>"; };
 		8A484A082229A86D00362980 /* confirm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm.json; sourceTree = "<group>"; };
 		8A484A0A2229A8A600362980 /* ConfirmPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPageCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A53CAF2222EAAB8006B2D66 /* QRDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailsViewController.swift; sourceTree = "<group>"; };
 		8A983B01222A7D3800980F15 /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
 		8A983B07222A9FD100980F15 /* Standard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Standard.json; sourceTree = "<group>"; };
 		8A983B09222AA5DF00980F15 /* Detailed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Detailed.json; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				8A4849FC2229632100362980 /* SwipingCollectionViewController.swift */,
 				8A983B15222AE15A00980F15 /* QRCodeViewController.swift */,
 				8A4831E6222C2ECD00FE0088 /* ARViewController.swift */,
+				8A53CAF2222EAAB8006B2D66 /* QRDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				8A15BF6022287A4E001C683D /* ProfileViewController.swift in Sources */,
 				8A4849FD2229632100362980 /* SwipingCollectionViewController.swift in Sources */,
 				8A15BF312227FDCF001C683D /* Colors.swift in Sources */,
+				8A53CAF3222EAAB8006B2D66 /* QRDetailsViewController.swift in Sources */,
 				8A15BF6222287EC1001C683D /* ProfileView.swift in Sources */,
 				8A983B22222BC6C400980F15 /* QRModel.swift in Sources */,
 				8A15BF3C222809A4001C683D /* Constants.swift in Sources */,

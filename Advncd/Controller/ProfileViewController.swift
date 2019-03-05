@@ -116,8 +116,29 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        transitionToQRDetailsVC(indexPath: indexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.frame.size.height * 0.175
+    }
+    
+    func transitionToQRDetailsVC(indexPath: Int) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let QRDetailsVC = storyboard.instantiateViewController(withIdentifier: "QRDetailsVC") as! QRDetailsViewController
+        let indexPath = IndexPath(row: indexPath, section: 0)
+        let cell = profileView.tableView.cellForRow(at: indexPath) as! QRCodeTableViewCell
+        QRDetailsVC.qrView.QRCodeImage.image = cell.QRImageView.image
+        QRDetailsVC.qrView.detailsLabel.text = cell.detailsLabel.text
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(QRDetailsVC, animated: false, completion: nil)
     }
     
     
