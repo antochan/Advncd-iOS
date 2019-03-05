@@ -46,7 +46,6 @@
 		8A198EF5222DD74F00241007 /* Guidance-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF0222DD74F00241007 /* Guidance-3.json */; };
 		8A198EF6222DD74F00241007 /* Guidance-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EF1222DD74F00241007 /* Guidance-4.json */; };
 		8A198EFF222DDFA000241007 /* Guidance-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198EFE222DDFA000241007 /* Guidance-1.json */; };
-		8A198F01222DE79400241007 /* Guidance-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A198F00222DE79400241007 /* Guidance-0.json */; };
 		8A4831E7222C2ECD00FE0088 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E6222C2ECD00FE0088 /* ARViewController.swift */; };
 		8A4831E9222C32A400FE0088 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831E8222C32A400FE0088 /* ImageExtensions.swift */; };
 		8A4831EB222D37CF00FE0088 /* StandardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4831EA222D37CF00FE0088 /* StandardNode.swift */; };
@@ -75,6 +74,7 @@
 		8A983B1E222BBC3000980F15 /* QRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A983B1C222BBC3000980F15 /* QRCodeTableViewCell.xib */; };
 		8A983B20222BC4CD00980F15 /* QRServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A983B1F222BC4CD00980F15 /* QRServices.swift */; };
 		8A983B22222BC6C400980F15 /* QRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A983B21222BC6C400980F15 /* QRModel.swift */; };
+		8AAF28FA222EE526008CC82C /* Guidance-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF28F9222EE526008CC82C /* Guidance-0.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +140,6 @@
 		8A198EF0222DD74F00241007 /* Guidance-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-3.json"; sourceTree = "<group>"; };
 		8A198EF1222DD74F00241007 /* Guidance-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-4.json"; sourceTree = "<group>"; };
 		8A198EFE222DDFA000241007 /* Guidance-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Guidance-1.json"; sourceTree = "<group>"; };
-		8A198F00222DE79400241007 /* Guidance-0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Guidance-0.json"; path = "../../../../../Desktop/Advncd/Guidance-0.json"; sourceTree = "<group>"; };
 		8A4831E6222C2ECD00FE0088 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		8A4831E8222C32A400FE0088 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		8A4831EA222D37CF00FE0088 /* StandardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNode.swift; sourceTree = "<group>"; };
@@ -169,6 +168,8 @@
 		8A983B1C222BBC3000980F15 /* QRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTableViewCell.xib; sourceTree = "<group>"; };
 		8A983B1F222BC4CD00980F15 /* QRServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRServices.swift; sourceTree = "<group>"; };
 		8A983B21222BC6C400980F15 /* QRModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRModel.swift; sourceTree = "<group>"; };
+		8AAF28F9222EE526008CC82C /* Guidance-0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Guidance-0.json"; path = "../../../../../Desktop/Advncd/Animations/Guidance-0.json"; sourceTree = "<group>"; };
+		8AAF28FB222EEADF008CC82C /* Advncd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Advncd.entitlements; sourceTree = "<group>"; };
 		92C265DEA74ECFE19D52F0BF /* Pods_AdvncdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvncdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE42CD4EB1774E7611D5007 /* Pods-Advncd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advncd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Advncd/Pods-Advncd.release.xcconfig"; sourceTree = "<group>"; };
 		9F087AA2D12DE8C238FF019E /* Pods-AdvncdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvncdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvncdUITests/Pods-AdvncdUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		8A15BEFD2227FCD5001C683D /* Advncd */ = {
 			isa = PBXGroup;
 			children = (
+				8AAF28FB222EEADF008CC82C /* Advncd.entitlements */,
 				8A15BF2D2227FD92001C683D /* Model */,
 				8A15BF342227FF34001C683D /* View */,
 				8A15BF2C2227FD81001C683D /* Controller */,
@@ -374,7 +376,7 @@
 		8A198EED222DD74200241007 /* Guidance Animation */ = {
 			isa = PBXGroup;
 			children = (
-				8A198F00222DE79400241007 /* Guidance-0.json */,
+				8AAF28F9222EE526008CC82C /* Guidance-0.json */,
 				8A198EFE222DDFA000241007 /* Guidance-1.json */,
 				8A198EEE222DD74F00241007 /* Guidance-2.json */,
 				8A198EF0222DD74F00241007 /* Guidance-3.json */,
@@ -495,6 +497,9 @@
 							com.apple.InAppPurchase = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 					8A15BF0E2227FCD7001C683D = {
@@ -535,6 +540,7 @@
 				8A15BF50222836BA001C683D /* Montserrat-Bold.ttf in Resources */,
 				8A983B1E222BBC3000980F15 /* QRCodeTableViewCell.xib in Resources */,
 				8A484A092229A86D00362980 /* confirm.json in Resources */,
+				8AAF28FA222EE526008CC82C /* Guidance-0.json in Resources */,
 				8A198EFF222DDFA000241007 /* Guidance-1.json in Resources */,
 				8A15BF5422283C4C001C683D /* Loader.json in Resources */,
 				8A15BF51222836BA001C683D /* Montserrat-Regular.ttf in Resources */,
@@ -556,7 +562,6 @@
 				8A983B0E222AA96300980F15 /* Resume.json in Resources */,
 				8A15BF4E222836BA001C683D /* Montserrat-Medium.ttf in Resources */,
 				8A15BF042227FCD5001C683D /* Main.storyboard in Resources */,
-				8A198F01222DE79400241007 /* Guidance-0.json in Resources */,
 				8A983B14222AB1BD00980F15 /* Card.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

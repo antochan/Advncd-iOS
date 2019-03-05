@@ -79,8 +79,12 @@ class ProfileViewController: UIViewController {
         QRServices.instance.userQRCodes.removeAll()
         QRServices.instance.getUserQRCodes(uid: uid) { (success) in
             if success {
+                self.profileView.animationView.isHidden = true
+                self.profileView.loaderbackground.isHidden = true
                 self.profileView.tableView.reloadData()
             } else {
+                self.profileView.animationView.isHidden = true
+                self.profileView.loaderbackground.isHidden = true
                 self.displayAlert(title: "Error", message: "There was an error getting your QR codes! Try again later!")
             }
         }
