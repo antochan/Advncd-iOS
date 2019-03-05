@@ -14,7 +14,6 @@ class QRCodeTableViewCell: UITableViewCell {
     @IBOutlet weak var QRImageView: UIImageView!
     @IBOutlet weak var detailsLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         cardView.backgroundColor = UIColor.FlatColor.Blue.MatDarkBlue

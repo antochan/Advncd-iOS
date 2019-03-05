@@ -25,6 +25,7 @@ class QRCodeView: UIView {
     
     //confirm Button
     let confirmButton = UIButton()
+    let saveImageButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,6 +81,16 @@ class QRCodeView: UIView {
         confirmButton.setTitleColor(.white, for: .normal)
         confirmButton.titleLabel?.font = UIFont.MontserratMedium(size: 15)
         confirmButton.backgroundColor = UIColor.FlatColor.Green.LogoGreen
+        
+        backgroundOverlay.addSubview(saveImageButton)
+        saveImageButton.anchor(top: nil, leading: self.leadingAnchor, bottom: confirmButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: screenWidth * 0.15, bottom: screenHeight * 0.05, right: screenWidth * 0.15), size: .init(width: screenWidth * 0.7, height: screenHeight * 0.05))
+        saveImageButton.layer.cornerRadius = 10
+        saveImageButton.layer.masksToBounds = true
+        saveImageButton.layer.borderWidth = 1
+        saveImageButton.layer.borderColor = UIColor.white.cgColor
+        saveImageButton.setTitle("Save Image", for: .normal)
+        saveImageButton.setTitleColor(.white, for: .normal)
+        saveImageButton.titleLabel?.font = UIFont.MontserratMedium(size: 15)
     }
     
 }

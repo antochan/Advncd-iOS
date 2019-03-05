@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class ProfileView: UIView {
     
@@ -27,6 +28,10 @@ class ProfileView: UIView {
     
     //No data label
     let noDataLabel = UILabel()
+    
+    //spinner loader
+    let loaderbackground = UIView()
+    let animationView = LOTAnimationView()
     
     
     override init(frame: CGRect) {
@@ -79,6 +84,18 @@ class ProfileView: UIView {
         noDataLabel.text = "No QR codes saved yet!"
         noDataLabel.textColor = UIColor.FlatColor.Gray.IdleGray
         noDataLabel.textAlignment = .center
+        
+        
+        
+        backgroundOverlay.addSubview(loaderbackground)
+        loaderbackground.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        loaderbackground.backgroundColor = UIColor.FlatColor.Blue.DarkBlue.withAlphaComponent(0.95)
+        
+        loaderbackground.addSubview(animationView)
+        animationView.frame = CGRect(x: screenWidth * 0.4, y: (screenHeight * 0.5) - (screenWidth * 0.2), width: screenWidth * 0.2, height: screenWidth * 0.2)
+        animationView.setAnimation(named: "Loader")
+        animationView.play()
+        animationView.loopAnimation = true
     }
 
 }

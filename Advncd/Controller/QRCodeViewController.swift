@@ -28,6 +28,7 @@ class QRCodeViewController: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         setupQRUpload()
         qrView.confirmButton.addTarget(self, action: #selector(confirmPressed), for: .touchUpInside)
+        qrView.saveImageButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -70,6 +71,10 @@ class QRCodeViewController: UIViewController {
     
     @objc func confirmPressed() {
         transitionToBaseVC()
+    }
+    
+    @objc func saveImage() {
+        UIImageWriteToSavedPhotosAlbum(qrView.QRCodeImage.image!, nil, nil, nil)
     }
     
 }

@@ -74,6 +74,8 @@ class ProfileViewController: UIViewController {
     }
     
     func getUserQRCodes(uid: String) {
+        profileView.animationView.isHidden = false
+        profileView.loaderbackground.isHidden = false
         QRServices.instance.userQRCodes.removeAll()
         QRServices.instance.getUserQRCodes(uid: uid) { (success) in
             if success {
@@ -106,8 +108,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let date = userQRCodes[indexPath.row].date
         let qrType = userQRCodes[indexPath.row].qrType
         let downloadURL = userQRCodes[indexPath.row].downloadURL
-        let httpsReference = Storage.storage().reference(forURL: downloadURL)
-        cell.QRImageView.sd_setImage(with: httpsReference, placeholderImage: #imageLiteral(resourceName: "QRcode"))
+        cell.QRImageView.sd_setImage(with: URL(string: downloadURL), placeholderImage: #imageLiteral(resourceName: "QRcode"), completed: { image, error, cacheType, imageURL in
+            self.profileView.loaderbackground.isHidden = true
+            self.profileView.animationView.isHidden = true
+        })
         cell.detailsLabel.text = "Type: \(qrType)\nCreated at: \(date)"
         return cell
     }
@@ -115,5 +119,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.frame.size.height * 0.175
     }
+    
     
 }
