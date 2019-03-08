@@ -101,6 +101,7 @@ class PageCollectionViewCell: UICollectionViewCell {
         addImage.image = #imageLiteral(resourceName: "Picture")
         
         backgroundOverlay.addSubview(textBox)
+        textBox.autocorrectionType = .no
         textBox.backgroundColor = UIColor.FlatColor.Blue.DarkBlue
         textBox.isHidden = true
         textBox.layer.borderColor = UIColor.white.cgColor

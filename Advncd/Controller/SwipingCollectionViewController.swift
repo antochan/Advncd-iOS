@@ -69,10 +69,27 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         self.hideKeyboardWhenTappedAround()
         setupPageControl()
         setupNavBar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func setupNavBar() {
@@ -113,6 +130,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PageCollectionViewCell
+        
         self.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         
         if selectedType == 1 {
@@ -473,6 +491,10 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         }
     }
 
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
 }
 
 extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
