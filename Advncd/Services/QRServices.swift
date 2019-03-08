@@ -17,6 +17,7 @@ class QRServices {
     
     static let instance = QRServices()
     var userQRCodes = [QR]()
+    var errorMessage = " "
     
     private func reference(to collectionReference: CollectionReferences) -> CollectionReference {
         return Firestore.firestore().collection(collectionReference.rawValue)
@@ -50,6 +51,24 @@ class QRServices {
                     completion(true)
                 }
             }
+    }
+    
+    func removeRealtimeQRCode(qrId: String, selectedType: String) {
+        let ref = Database.database().reference().child("QR").child("\(qrId)_\(selectedType)")
+        ref.removeValue()
+    }
+    
+    func removeQRCode(uid: String, qrId: String, completion: @escaping CompletionHandler) {
+        reference(to: .Users).document(uid).collection("QRCodes").document(qrId)
+            .delete() { err in
+            if let err = err {
+                self.errorMessage = err.localizedDescription
+                print(err.localizedDescription)
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
     }
     
 }

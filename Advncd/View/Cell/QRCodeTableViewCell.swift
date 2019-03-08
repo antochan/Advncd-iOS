@@ -13,6 +13,7 @@ class QRCodeTableViewCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var QRImageView: UIImageView!
     @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var removeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

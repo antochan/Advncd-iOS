@@ -118,6 +118,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             self.profileView.animationView.isHidden = true
         })
         cell.detailsLabel.text = "Type: \(qrType)\nCreated at: \(date)"
+        cell.removeButton.tag = indexPath.row
+        cell.removeButton.addTarget(self, action: #selector(removeQRCodeTapped), for: .touchUpInside)
         return cell
     }
     
@@ -146,5 +148,22 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         present(QRDetailsVC, animated: false, completion: nil)
     }
     
+    @objc func removeQRCodeTapped(sender: UIButton) {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        QRServices.instance.removeRealtimeQRCode(qrId: QRServices.instance.userQRCodes[sender.tag].qrId, selectedType: QRServices.instance.userQRCodes[sender.tag].qrType)
+        if let uid = Auth.auth().currentUser?.uid {
+            QRServices.instance.removeQRCode(uid: uid, qrId: QRServices.instance.userQRCodes[sender.tag].qrId) { (success) in
+                if success {
+                    print(sender.tag)
+                    self.getUserQRCodes(uid: uid)
+                    self.profileView.tableView.reloadData()
+                    UIViewController.removeSpinner(spinner: sv)
+                } else {
+                    UIViewController.removeSpinner(spinner: sv)
+                    self.displayAlert(title: "Error", message: "Something unexpected happened when trying to delete your QR code, try again later")
+                }
+            }
+        }
+    }
     
 }
