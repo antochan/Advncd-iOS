@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import CropViewController
 
 private let reuseIdentifier = "Cell"
 private let reuseId2 = "Confirm"
@@ -497,7 +498,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     }
 }
 
-extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Options", message: "Please Select an Option", preferredStyle: .actionSheet)
@@ -506,7 +507,7 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
             self.imagePicker = UIImagePickerController()
             self.imagePicker.delegate = self
             self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.allowsEditing = true
+            self.imagePicker.allowsEditing = false
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
@@ -528,63 +529,112 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if selectedType == 1 {
-                standardImage = image
+                standardImageCrop(image: image, picker: picker)
             }
             else if selectedType == 2 {
-                if pageControl.currentPage == 0 {
-                    detailedMainImage = image
-                }
-                else if pageControl.currentPage == 2 {
-                    detailedPannelImageOne = image
-                }
-                else {
-                    detailedPannelImageTwo = image
-                }
+                standardImageCrop(image: image, picker: picker)
             }
             else if selectedType == 3 {
                 if pageControl.currentPage == 0 {
-                    headShotImage = image
+                    circularImagecrop(image: image, picker: picker)
                 }
                 else if pageControl.currentPage == 1 {
                     resumeImage = image
                 }
             }
             else if selectedType == 4 {
-                if pageControl.currentPage == 0 {
-                    topLeft = image
-                }
-                else if pageControl.currentPage == 1 {
-                    topRight = image
-                }
-                else if pageControl.currentPage == 2 {
-                    bottomLeft = image
-                }
-                else {
-                    bottomRight = image
-                }
+                standardImageCrop(image: image, picker: picker)
             }
             else if selectedType == 5 {
-                if pageControl.currentPage == 0 {
-                    galleryMain = image
-                }
-                else if pageControl.currentPage == 1 {
-                    subGallery1 = image
-                }
-                else if pageControl.currentPage == 2 {
-                    subGallery2 = image
-                }
-                else {
-                    subGallery3 = image
-                }
+                standardImageCrop(image: image, picker: picker)
             }
             else if selectedType == 6 {
-                if pageControl.currentPage == 0 {
-                    cardImage = image
-                }
+                circularImagecrop(image: image, picker: picker)
             }
-            
             self.collectionView.reloadData()
         }
         dismiss(animated: true, completion: nil)
     }
+    
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        if selectedType == 1 {
+            standardImage = image
+        }
+        else if selectedType == 2 {
+            if pageControl.currentPage == 0 {
+                detailedMainImage = image
+            }
+            else if pageControl.currentPage == 2 {
+                detailedPannelImageOne = image
+            }
+            else {
+                detailedPannelImageTwo = image
+            }
+        }
+        else if selectedType == 3 {
+            if pageControl.currentPage == 0 {
+                headShotImage = image
+            }
+            else if pageControl.currentPage == 1 {
+                resumeImage = image
+            }
+        }
+        else if selectedType == 4 {
+            if pageControl.currentPage == 0 {
+                topLeft = image
+            }
+            else if pageControl.currentPage == 1 {
+                topRight = image
+            }
+            else if pageControl.currentPage == 2 {
+                bottomLeft = image
+            }
+            else {
+                bottomRight = image
+            }
+        }
+        else if selectedType == 5 {
+            if pageControl.currentPage == 0 {
+                galleryMain = image
+            }
+            else if pageControl.currentPage == 1 {
+                subGallery1 = image
+            }
+            else if pageControl.currentPage == 2 {
+                subGallery2 = image
+            }
+            else {
+                subGallery3 = image
+            }
+        }
+        else if selectedType == 6 {
+            if pageControl.currentPage == 0 {
+                cardImage = image
+            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        self.collectionView.reloadData()
+    }
+    
+    func standardImageCrop(image: UIImage, picker: UIImagePickerController) {
+        let cropController = CropViewController(croppingStyle: CropViewCroppingStyle.default, image: image)
+        cropController.delegate = self
+        
+        cropController.title = "Optimze your image"
+        cropController.aspectRatioPreset = .preset4x3; //Set the initial aspect ratio as a square
+        cropController.aspectRatioLockEnabled = true // The crop box is locked to the aspect ratio and can't be resized away from it
+        picker.dismiss(animated: false, completion: {
+            self.present(cropController, animated: true, completion: nil)
+        })
+    }
+    
+    func circularImagecrop(image: UIImage, picker: UIImagePickerController) {
+        let cropController = CropViewController(croppingStyle: CropViewCroppingStyle.circular, image: image)
+        cropController.delegate = self
+        picker.dismiss(animated: false, completion: {
+            self.present(cropController, animated: true, completion: nil)
+        })
+    }
+
 }

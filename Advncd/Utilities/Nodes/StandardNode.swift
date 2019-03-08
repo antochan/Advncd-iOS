@@ -44,11 +44,10 @@ extension SCNNode {
                 mainImage.contentMode = .scaleAspectFit
                 mainImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"), completed: { image, error, cacheType, imageURL in
                     // your rest code
-                    let mainImagePlane = SCNPlane(width: mainPlane.width - 0.03, height: mainPlane.height * 0.5)
+                    let mainImagePlane = SCNPlane(width: mainPlane.width - 0.03, height: 0.15375)
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = mainImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     mainImagePlane.firstMaterial = material
