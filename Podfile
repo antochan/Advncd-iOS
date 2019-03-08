@@ -19,6 +19,7 @@ target 'Advncd' do
   pod 'FirebaseUI/Storage'
   pod 'SDWebImage'
   pod 'UICircularProgressRing'
+  pod 'CropViewController'
  
 
   target 'AdvncdTests' do

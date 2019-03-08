@@ -16,7 +16,7 @@ import FirebaseDatabase
 extension SCNNode {
     
     func RegularARNode(uuid: String, selectedType: String) -> SCNNode {
-        let backgroundPlane = SCNPlane(width: 0.21, height: 0.3)
+        let backgroundPlane = SCNPlane(width: 0.245, height: 0.35)
         backgroundPlane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
         backgroundPlane.cornerRadius = 0.01
         let backgroundPlaneNode = SCNNode(geometry: backgroundPlane)
@@ -25,7 +25,7 @@ extension SCNNode {
         backgroundPlaneNode.scale = SCNVector3(0, 0, 0)
         backgroundPlaneNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 0.15), SCNAction.scale(to: 1, duration: 0.5)]))
         
-        let mainPlane = SCNPlane(width: 0.2, height: 0.29)
+        let mainPlane = SCNPlane(width: 0.235, height: 0.34)
         let backgroundImage = #imageLiteral(resourceName: "AR-Background")
         mainPlane.firstMaterial?.diffuse.contents = backgroundImage
         mainPlane.cornerRadius = 0.01

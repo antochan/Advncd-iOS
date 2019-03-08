@@ -94,7 +94,7 @@ class PageCollectionViewCell: UICollectionViewCell {
         addImage.isHidden = true
         addImage.contentMode = .scaleAspectFill
         
-        addImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.15, bottom: 0, right: screenWidth * 0.15), size: .init(width: screenWidth * 0.7, height: (screenWidth * 0.7) * 0.8))
+        addImage.anchor(top: instructionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: screenHeight * 0.025, left: screenWidth * 0.15, bottom: 0, right: screenWidth * 0.15), size: .init(width: screenWidth * 0.8, height: (screenWidth * 0.8) * 0.7))
         
         addImage.layer.cornerRadius = 10
         addImage.layer.masksToBounds = true

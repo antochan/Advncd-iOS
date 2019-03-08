@@ -506,7 +506,7 @@ extension SwipingCollectionViewController: UIImagePickerControllerDelegate, UINa
             self.imagePicker = UIImagePickerController()
             self.imagePicker.delegate = self
             self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.allowsEditing = false
+            self.imagePicker.allowsEditing = true
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
