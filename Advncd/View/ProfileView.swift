@@ -29,6 +29,9 @@ class ProfileView: UIView {
     //No data label
     let noDataLabel = UILabel()
     
+    //remaining available
+    let remainingLabel = UILabel()
+    
     //spinner loader
     let loaderbackground = UIView()
     let animationView = LOTAnimationView()
@@ -68,9 +71,17 @@ class ProfileView: UIView {
         logo.frame = CGRect(x: screenWidth * 0.325, y: 0, width: screenWidth * 0.35, height: screenWidth * 0.35)
         logo.image = #imageLiteral(resourceName: "Logo")
         
+        //remainingLabel
+        backgroundOverlay.addSubview(remainingLabel)
+        remainingLabel.anchor(top: logo.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.3, bottom: 0, right: screenWidth * 0.3), size: .init(width: screenWidth * 0.4, height: 12))
+        remainingLabel.textColor = UIColor.FlatColor.Gray.IdleGray
+        remainingLabel.font = UIFont.MontserratRegular(size: 11)
+        remainingLabel.textAlignment = .center
+        
+        
         //table view component
         backgroundOverlay.addSubview(tableView)
-        tableView.anchor(top: logo.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.1, bottom: 0, right: screenWidth * 0.1))
+        tableView.anchor(top: remainingLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 8, left: screenWidth * 0.1, bottom: 0, right: screenWidth * 0.1))
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false

@@ -8,11 +8,13 @@
 
 import UIKit
 import AudioToolbox
+import Firebase
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let baseView = BaseView()
     let cellId = "BaseCell"
+    var isOverQuota = false
     
     override func loadView() {
         self.view = baseView
@@ -100,6 +102,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
     }
+    
+    func getUserQRCodes(uid: String) {
+    }
 
 }
 
@@ -145,23 +150,39 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            transitionToSwiping(selectedType: 1)
-        }
-        else if indexPath.row == 1 {
-            transitionToSwiping(selectedType: 2)
-        }
-        else if indexPath.row == 2 {
-            transitionToSwiping(selectedType: 3)
-        }
-        else if indexPath.row == 3 {
-            transitionToSwiping(selectedType: 4)
-        }
-        else if indexPath.row == 4 {
-            transitionToSwiping(selectedType: 5)
-        }
-        else if indexPath.row == 5 {
-            transitionToSwiping(selectedType: 6)
+        
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        QRServices.instance.getUserQRCodes(uid: (Auth.auth().currentUser?.uid)!) { (success) in
+            if success {
+                if QRServices.instance.userQRCodes.count >= 3 {
+                    UIViewController.removeSpinner(spinner: sv)
+                    self.displayAlert(title: "You're over limit!", message: "Unfortunately you've made 3 or more QR codes already. Please contact me personally if you'd like more! :)")
+                    return
+                } else {
+                    UIViewController.removeSpinner(spinner: sv)
+                    if indexPath.row == 0 {
+                        self.transitionToSwiping(selectedType: 1)
+                    }
+                    else if indexPath.row == 1 {
+                        self.transitionToSwiping(selectedType: 2)
+                    }
+                    else if indexPath.row == 2 {
+                        self.transitionToSwiping(selectedType: 3)
+                    }
+                    else if indexPath.row == 3 {
+                        self.transitionToSwiping(selectedType: 4)
+                    }
+                    else if indexPath.row == 4 {
+                        self.transitionToSwiping(selectedType: 5)
+                    }
+                    else if indexPath.row == 5 {
+                        self.transitionToSwiping(selectedType: 6)
+                    }
+                }
+            } else {
+                self.displayAlert(title: "Error!", message: "Error with fetching data from server. Please check connection.")
+                UIViewController.removeSpinner(spinner: sv)
+            }
         }
     }
     

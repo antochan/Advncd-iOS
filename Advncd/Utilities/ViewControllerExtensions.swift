@@ -70,5 +70,5 @@ extension UIApplication {
             return false
         }
     }
-    
 }
+

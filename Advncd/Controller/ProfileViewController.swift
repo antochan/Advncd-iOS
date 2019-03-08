@@ -82,6 +82,7 @@ class ProfileViewController: UIViewController {
                 self.profileView.animationView.isHidden = true
                 self.profileView.loaderbackground.isHidden = true
                 self.profileView.tableView.reloadData()
+                self.profileView.remainingLabel.text = "\(QRServices.instance.userQRCodes.count) / 3"
             } else {
                 self.profileView.animationView.isHidden = true
                 self.profileView.loaderbackground.isHidden = true
