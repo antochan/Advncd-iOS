@@ -16,7 +16,7 @@ import FirebaseDatabase
 extension SCNNode {
     
     func GalleryNode(uuid: String, selectedType: String) -> SCNNode {
-        let backgroundPlane = SCNPlane(width: 0.4, height: 0.28)
+        let backgroundPlane = SCNPlane(width: 0.37, height: 0.28)
         backgroundPlane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
         backgroundPlane.cornerRadius = 0.01
         let backgroundPlaneNode = SCNNode(geometry: backgroundPlane)
@@ -36,11 +36,10 @@ extension SCNNode {
                 mainImage.contentMode = .scaleAspectFit
                 mainImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"), completed: { image, error, cacheType, imageURL in
                     // your rest code
-                    let mainImagePlane = SCNPlane(width: 0.38, height: 0.26)
+                    let mainImagePlane = SCNPlane(width: 0.35, height: 0.265)
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = mainImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     mainImagePlane.firstMaterial = material
@@ -66,7 +65,6 @@ extension SCNNode {
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = bottomLeftImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     bottomLeftPlane.firstMaterial = material
@@ -92,7 +90,6 @@ extension SCNNode {
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = bottomMidImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     bottomMidPlane.firstMaterial = material
@@ -118,7 +115,6 @@ extension SCNNode {
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = bottomRightImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     bottomRightPlane.firstMaterial = material

@@ -81,7 +81,7 @@ extension SCNNode {
             })
             
             let bottomRightImage = UIImageView()
-            let bottomRightURL = Database.database().reference().child("Images").child("\(uuid)_BottomLeft")
+            let bottomRightURL = Database.database().reference().child("Images").child("\(uuid)_BottomRight")
             bottomRightURL.observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let urlString = snapshot.value as! String

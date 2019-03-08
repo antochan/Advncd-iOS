@@ -16,7 +16,7 @@ import FirebaseDatabase
 extension SCNNode {
 
     func DetailedNodeAR(uuid: String, selectedType: String) -> SCNNode {
-        let backgroundPlane = SCNPlane(width: 0.21, height: 0.3)
+        let backgroundPlane = SCNPlane(width: 0.245, height: 0.35)
         backgroundPlane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
         backgroundPlane.cornerRadius = 0.01
         let backgroundPlaneNode = SCNNode(geometry: backgroundPlane)
@@ -25,7 +25,7 @@ extension SCNNode {
         backgroundPlaneNode.scale = SCNVector3(0, 0, 0)
         backgroundPlaneNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 0.15), SCNAction.scale(to: 1, duration: 0.5)]))
         
-        let mainPlane = SCNPlane(width: 0.2, height: 0.29)
+        let mainPlane = SCNPlane(width: 0.235, height: 0.34)
         let backgroundImage = #imageLiteral(resourceName: "AR-Background")
         mainPlane.firstMaterial?.diffuse.contents = backgroundImage
         mainPlane.cornerRadius = 0.01
@@ -44,11 +44,10 @@ extension SCNNode {
                 mainImage.contentMode = .scaleAspectFit
                 mainImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"), completed: { image, error, cacheType, imageURL in
                     // your rest code
-                    let mainImagePlane = SCNPlane(width: mainPlane.width - 0.03, height: mainPlane.height * 0.5)
+                    let mainImagePlane = SCNPlane(width: mainPlane.width - 0.03, height: 0.15375)
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = mainImage.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     mainImagePlane.firstMaterial = material
@@ -71,19 +70,18 @@ extension SCNNode {
                 TopPannel.contentMode = .scaleAspectFit
                 TopPannel.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"), completed: { image, error, cacheType, imageURL in
                     // your rest code
-                    let TopPannelPlane = SCNPlane(width: mainPlane.width - 0.05, height: mainPlane.height * 0.4)
+                    let TopPannelPlane = SCNPlane(width: mainPlane.width - 0.05, height: 0.13875)
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = TopPannel.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     TopPannelPlane.firstMaterial = material
                     TopPannelPlane.cornerRadius = 0.0075
                     let TopPannelNode = SCNNode(geometry: TopPannelPlane)
-                    TopPannelNode.position = SCNVector3(planeNode.position.x, 0.07, 0.04)
+                    TopPannelNode.position = SCNVector3(planeNode.position.x, 0.08, 0.04)
                     TopPannelNode.opacity = 0
-                    TopPannelNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 1), SCNAction.fadeOpacity(by: 1, duration: 0.1), SCNAction.move(to: SCNVector3(x: planeNode.position.x + 0.19, y: 0.07, z: 0.04), duration: 0.25)]))
+                    TopPannelNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 1), SCNAction.fadeOpacity(by: 1, duration: 0.1), SCNAction.move(to: SCNVector3(x: planeNode.position.x + 0.215, y: 0.08, z: 0.04), duration: 0.25)]))
                     backgroundPlaneNode.addChildNode(TopPannelNode)
                 })
             })
@@ -97,19 +95,18 @@ extension SCNNode {
                 BottomPannel.contentMode = .scaleAspectFit
                 BottomPannel.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"), completed: { image, error, cacheType, imageURL in
                     // your rest code
-                    let BottomPannelPlane = SCNPlane(width: mainPlane.width - 0.05, height: mainPlane.height * 0.4)
+                    let BottomPannelPlane = SCNPlane(width: mainPlane.width - 0.05, height: 0.13875)
                     
                     let material = SCNMaterial()
                     material.diffuse.contents = BottomPannel.image
-                    material.diffuse.contentsTransform = SCNMatrix4MakeScale(1, 0.7, 1)
                     material.diffuse.wrapS = SCNWrapMode.repeat
                     material.diffuse.wrapT = SCNWrapMode.repeat
                     BottomPannelPlane.firstMaterial = material
                     BottomPannelPlane.cornerRadius = 0.0075
                     let BottomPannelNode = SCNNode(geometry: BottomPannelPlane)
-                    BottomPannelNode.position = SCNVector3(planeNode.position.x, -0.07, 0.04)
+                    BottomPannelNode.position = SCNVector3(planeNode.position.x, -0.08, 0.04)
                     BottomPannelNode.opacity = 0
-                    BottomPannelNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 1), SCNAction.fadeOpacity(by: 1, duration: 0.1), SCNAction.move(to: SCNVector3(x: planeNode.position.x + 0.19, y: -0.07, z: 0.04), duration: 0.25)]))
+                    BottomPannelNode.runAction(SCNAction.sequence([SCNAction.wait(duration: 1), SCNAction.fadeOpacity(by: 1, duration: 0.1), SCNAction.move(to: SCNVector3(x: planeNode.position.x + 0.215, y: -0.08, z: 0.04), duration: 0.25)]))
                     backgroundPlaneNode.addChildNode(BottomPannelNode)
                 })
             })
