@@ -72,12 +72,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func cameraPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ARVC = storyboard.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
-        let transition = CATransition()
-        transition.duration = 0.4
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
         present(ARVC, animated: false, completion: nil)
     }
     
