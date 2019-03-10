@@ -31,8 +31,7 @@ class ARViewController: UIViewController {
     
     //loading component
     let loadingViewBackground = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    let qrProgressCircle = UICircularProgressRing(frame: CGRect(x: UIScreen.main.bounds.width * 0.3, y: (UIScreen.main.bounds.height * 0.5) - (UIScreen.main.bounds.width * 0.3), width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.4))
-    let loadingLabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.1, y: UIScreen.main.bounds.height * 0.7, width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.12))
+    let loadingLabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.1, y: (UIScreen.main.bounds.height * 0.5) - (UIScreen.main.bounds.width * 0.1), width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.1))
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +41,19 @@ class ARViewController: UIViewController {
         sceneView.showsStatistics = true
         startTimer()
     }
+    
+        func setupLoadingView() {
+            DispatchQueue.main.async {
+                self.sceneView.addSubview(self.loadingViewBackground)
+                self.loadingViewBackground.backgroundColor = UIColor.black.withAlphaComponent(0.85)
+                self.loadingViewBackground.addSubview(self.loadingLabel)
+                self.loadingLabel.textColor = .white
+                self.loadingLabel.numberOfLines = 0
+                self.loadingLabel.text = "Found New QR Code! Downloading Data..."
+                self.loadingLabel.textAlignment = .center
+                self.loadingLabel.font = UIFont.MontserratRegular(size: 16)
+            }
+        }
 
     func getIdentifiedQR(qrId: String, completion: @escaping CompletionHandler) {
         let reference = Database.database().reference().child("QR")
@@ -162,15 +174,15 @@ extension ARViewController: ARSCNViewDelegate, ARSessionDelegate {
         let image = CIImage(cvPixelBuffer: frame.capturedImage)
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
         let features = detector!.features(in: image)
-        
         for feature in features as! [CIQRCodeFeature] {
-            if !discoveredQRCodes.contains(feature.messageString!) {
-                discoveredQRCodes.append(feature.messageString!)
-                print(feature.messageString!)
+            if !self.discoveredQRCodes.contains(feature.messageString!) {
+                self.discoveredQRCodes.append(feature.messageString!)
+                self.setupLoadingView()
                 if let qrId = feature.messageString {
-                    getIdentifiedQR(qrId: qrId) { (success) in
+                    self.getIdentifiedQR(qrId: qrId) { (success) in
                         if success {
                             self.restartSession()
+                            self.loadingViewBackground.removeFromSuperview()
                         }
                     }
                 }
