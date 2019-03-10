@@ -26,6 +26,9 @@ class ARViewController: UIViewController {
     let configuration = ARImageTrackingConfiguration()
     var discoveredQRCodes = [String]()
     
+    var time = 0.0
+    var timer = Timer()
+    
     //loading component
     let loadingViewBackground = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     let qrProgressCircle = UICircularProgressRing(frame: CGRect(x: UIScreen.main.bounds.width * 0.3, y: (UIScreen.main.bounds.height * 0.5) - (UIScreen.main.bounds.width * 0.3), width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.4))
@@ -36,58 +39,10 @@ class ARViewController: UIViewController {
         configuration.trackingImages = self.ARTrackingImages
         configuration.maximumNumberOfTrackedImages = 1
         self.sceneView.session.run(configuration)
+        sceneView.showsStatistics = true
+        startTimer()
     }
-    
-//    func setupLoadingView() {
-//        DispatchQueue.main.async {
-//            self.loadingViewBackground.backgroundColor = UIColor.FlatColor.Blue.DarkBlue
-//            self.loadingViewBackground.addSubview(self.loadingLabel)
-//
-//            self.loadingViewBackground.addSubview(self.qrProgressCircle)
-//            self.qrProgressCircle.minValue = 0
-//            self.qrProgressCircle.maxValue = 100
-//            self.qrProgressCircle.outerRingColor = UIColor.FlatColor.Green.LogoGreen
-//            self.qrProgressCircle.innerRingColor = .white
-//            self.qrProgressCircle.innerRingWidth = 5
-//            self.qrProgressCircle.fontColor = .white
-//            self.qrProgressCircle.font = UIFont.MontserratMedium(size: 16)
-//
-//            self.loadingLabel.textColor = .white
-//            self.loadingLabel.numberOfLines = 0
-//            self.loadingLabel.text = "Downloading QR Codes from server. This may take a while!"
-//            self.loadingLabel.textAlignment = .center
-//            self.loadingLabel.font = UIFont.MontserratRegular(size: 15)
-//        }
-//    }
-//
-//    func getAllQRCodes(completion: @escaping CompletionHandler) {
-//            var downloaded = 0
-//            let reference = Database.database().reference().child("QR")
-//            reference.observe(DataEventType.value, with: { (snapshot) in
-//                let postDict = snapshot.value as? [String : String] ?? [:]
-//                DispatchQueue.global(qos: .background).async {
-//                    for (key, value) in postDict {
-//                        print("downloaded: \(downloaded) / total: \(postDict.count)")
-//                        let percentage = (Double(downloaded)/Double(postDict.count)) * 100
-//                        DispatchQueue.main.async {
-//                            self.qrProgressCircle.startProgress(to: CGFloat(percentage), duration: 1)
-//                        }
-//                        if self.downloadURLs.contains(value) == false {
-//                            self.downloadURLs.insert(value)
-//                            let qrImage = UIImage(url: URL(string: value))
-//                            let qrCiImage = CIImage(image: qrImage!)
-//                            let qrCGImage = self.convertCIImageToCGImage(inputImage: qrCiImage!)
-//                            let qrARImage = ARReferenceImage(qrCGImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.2)
-//                            qrARImage.name = key
-//                            self.ARTrackingImages.insert(qrARImage)
-//                            downloaded += 1
-//                        }
-//                    }
-//                completion(true)
-//                }
-//            })
-//    }
-    
+
     func getIdentifiedQR(qrId: String, completion: @escaping CompletionHandler) {
         let reference = Database.database().reference().child("QR")
         reference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -146,6 +101,24 @@ class ARViewController: UIViewController {
         }
         return nil
     }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    func resetTimer() {
+        timer.invalidate()
+        time = 0
+        startTimer()
+    }
+    
+    @objc func updateTime() {
+        if time < 0.5 {
+           time += 0.1
+        } else {
+            resetTimer()
+        }
+    }
 
 }
 
@@ -183,6 +156,9 @@ extension ARViewController: ARSCNViewDelegate, ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        if time != 0.5 {
+            return
+        }
         let image = CIImage(cvPixelBuffer: frame.capturedImage)
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
         let features = detector!.features(in: image)

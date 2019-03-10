@@ -19,7 +19,7 @@ extension String {
         guard let image = filter.outputImage
             else { return nil }
         let size = image.extent.integral
-        let output = CGSize(width: 100, height: 100)
+        let output = CGSize(width: 300, height: 300)
         let matrix = CGAffineTransform(scaleX: output.width / size.width, y: output.height / size.height)
         print(output.width / size.width)
         UIGraphicsBeginImageContextWithOptions(output, false, 0)
