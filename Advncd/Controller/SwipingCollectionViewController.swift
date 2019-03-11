@@ -468,7 +468,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     
     @objc func cancelPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondViewController = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "PagerTabVC") as! PagerTabViewController
         let transition = CATransition()
         transition.duration = 0.4
         transition.type = CATransitionType.push

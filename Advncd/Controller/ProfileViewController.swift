@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
     
     @objc func backPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let baseVC = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
+        let baseVC = storyboard.instantiateViewController(withIdentifier: "PagerTabVC") as! PagerTabViewController
         let transition = CATransition()
         transition.duration = 0.4
         transition.type = CATransitionType.push

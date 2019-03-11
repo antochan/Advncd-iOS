@@ -68,7 +68,7 @@ class ProfileView: UIView {
         logoutButton.setImage(#imageLiteral(resourceName: "logout"), for: .normal)
         
         backgroundOverlay.addSubview(logo)
-        logo.frame = CGRect(x: screenWidth * 0.325, y: 0, width: screenWidth * 0.35, height: screenWidth * 0.35)
+        logo.frame = CGRect(x: screenWidth/2 - 57.5, y: 10, width: 115, height: 115)
         logo.image = #imageLiteral(resourceName: "Logo")
         
         //remainingLabel

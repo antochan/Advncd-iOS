@@ -44,7 +44,7 @@ extension UIViewController {
     
     func transitionToBaseVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondViewController = storyboard.instantiateViewController(withIdentifier: "BaseVC") as! BaseViewController
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "PagerTabVC") as! PagerTabViewController
         present(secondViewController, animated: true, completion: nil)
     }
 }

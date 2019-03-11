@@ -9,81 +9,47 @@
 import UIKit
 import AudioToolbox
 import Firebase
+import XLPagerTabStrip
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate, IndicatorInfoProvider {
     
-    let baseView = BaseView()
     let cellId = "BaseCell"
     var isOverQuota = false
     
-    override func loadView() {
-        self.view = baseView
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if isAppAlreadyLaunchedOnce() == false {
-            showGuidance()
-        }
-    }
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    @IBOutlet weak var collectionView: UICollectionView!
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNeedsStatusBarAppearanceUpdate()
-        baseView.collectionView.delegate = self
-        baseView.collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
         let nib = UINib(nibName: "BaseCollectionViewCell", bundle: nil)
-        baseView.collectionView.register(nib, forCellWithReuseIdentifier: cellId)
-        baseView.profileButton.addTarget(self, action: #selector(profilePressed), for: .touchUpInside)
-        baseView.cameraButton.addTarget(self, action: #selector(cameraPressed), for: .touchUpInside)
+        collectionView.register(nib, forCellWithReuseIdentifier: cellId)
         
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
-        baseView.collectionView.addGestureRecognizer(lpgr)
+        collectionView.addGestureRecognizer(lpgr)
         
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    func isAppAlreadyLaunchedOnce() -> Bool {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            print("App already launched")
-            return true
-        } else {
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("App launched first time")
-            return false
-        }
-    }
-    
-    @objc func profilePressed() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
-        let transition = CATransition()
-        transition.duration = 0.4
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        present(profileVC, animated: false, completion: nil)
-    }
-    
-    @objc func cameraPressed() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let ARVC = storyboard.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
-        present(ARVC, animated: false, completion: nil)
+        layout.sectionInset = UIEdgeInsets(top: 12, left: screenWidth * 0.075, bottom: 0, right: screenWidth * 0.075)
+        layout.minimumLineSpacing = screenWidth * 0.05
+        layout.scrollDirection = .vertical
+        collectionView.collectionViewLayout = layout
+        collectionView.showsVerticalScrollIndicator = false
+        
     }
     
     @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .began {
             return
         }
-        let p = gesture.location(in: baseView.collectionView)
+        let p = gesture.location(in: collectionView)
         
-        if let indexPath = baseView.collectionView.indexPathForItem(at: p) {
+        if let indexPath = collectionView.indexPathForItem(at: p) {
             // get the cell at indexPath (the one you long pressed)
-            let cell = baseView.collectionView.cellForItem(at: indexPath) as! BaseCollectionViewCell
+            let cell = collectionView.cellForItem(at: indexPath) as! BaseCollectionViewCell
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             // do stuff with the cell
             cell.animationView.loopAnimation = false
@@ -97,7 +63,8 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func getUserQRCodes(uid: String) {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Default")
     }
 
 }
@@ -183,7 +150,7 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
-        return CGSize(width: viewWidth * 0.4, height: viewHeight * 0.275)
+        return CGSize(width: viewWidth * 0.45, height: viewHeight * 0.35)
     }
     
     func transitionToSwiping(selectedType: Int) {
@@ -194,20 +161,5 @@ extension BaseViewController: UICollectionViewDelegate, UICollectionViewDataSour
         swipingVC.collectionView.collectionViewLayout = layout
         swipingVC.selectedType = selectedType
         present(swipingVC, animated: true, completion: nil)
-    }
-    
-    func showGuidance() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let guidanceVC = storyboard.instantiateViewController(withIdentifier: "GuidanceVC") as! GuidanceCollectionViewController
-        guidanceVC.collectionView.collectionViewLayout = layout
-        let transition = CATransition()
-        transition.duration = 0.4
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        present(guidanceVC, animated: true, completion: nil)
     }
 }
