@@ -210,6 +210,9 @@ If you are a business or organization and would like to have your custom AR buil
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="emailTapped:" destination="zAL-o2-n0n" eventType="touchUpInside" id="HGA-xc-q0j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
