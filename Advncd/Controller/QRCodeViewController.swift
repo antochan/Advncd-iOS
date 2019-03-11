@@ -37,7 +37,7 @@ class QRCodeViewController: UIViewController {
     
     func setupQRUpload() {
         let sv = UIViewController.displaySpinner(onView: self.view)
-        let QRString = "\(uuid)_\(selectedType)"
+        let QRString = "https://advncd-ar.com/\(uuid)_\(selectedType)"
         qrView.QRCodeImage.image = QRString.qrCode
         let date = Date()
         let formatter = DateFormatter()

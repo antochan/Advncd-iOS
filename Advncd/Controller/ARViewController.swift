@@ -38,7 +38,6 @@ class ARViewController: UIViewController {
         configuration.trackingImages = self.ARTrackingImages
         configuration.maximumNumberOfTrackedImages = 1
         self.sceneView.session.run(configuration)
-        sceneView.showsStatistics = true
         startTimer()
     }
     
@@ -49,7 +48,7 @@ class ARViewController: UIViewController {
                 self.loadingViewBackground.addSubview(self.loadingLabel)
                 self.loadingLabel.textColor = .white
                 self.loadingLabel.numberOfLines = 0
-                self.loadingLabel.text = "Found New QR Code! Downloading Data..."
+                self.loadingLabel.text = "Found New QR Code! Displaying AR..."
                 self.loadingLabel.textAlignment = .center
                 self.loadingLabel.font = UIFont.MontserratRegular(size: 16)
             }
@@ -59,14 +58,15 @@ class ARViewController: UIViewController {
         let reference = Database.database().reference().child("QR")
         reference.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            if let downloadURL = value?[qrId] as? String {
+            let parsedId = qrId.replacingOccurrences(of: "https://advncd-ar.com/", with: "")
+            if let downloadURL = value?[parsedId] as? String {
                 if self.downloadURLs.contains(downloadURL) == false {
                     self.downloadURLs.insert(downloadURL)
                     let qrImage = UIImage(url: URL(string: downloadURL))
                     let qrCiImage = CIImage(image: qrImage!)
                     let qrCGImage = self.convertCIImageToCGImage(inputImage: qrCiImage!)
                     let qrARImage = ARReferenceImage(qrCGImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.2)
-                    qrARImage.name = qrId
+                    qrARImage.name = parsedId
                     self.ARTrackingImages.insert(qrARImage)
                 }
                 completion(true)
