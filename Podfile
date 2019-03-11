@@ -20,7 +20,7 @@ target 'Advncd' do
   pod 'SDWebImage'
   pod 'UICircularProgressRing'
   pod 'CropViewController'
- 
+  pod 'XLPagerTabStrip'
 
   target 'AdvncdTests' do
     inherit! :search_paths

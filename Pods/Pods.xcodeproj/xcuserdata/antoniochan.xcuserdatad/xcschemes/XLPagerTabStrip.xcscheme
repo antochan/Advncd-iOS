@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7B7FC5E8FE3916372453A215F8FF5661"
-               BlueprintName = "UICircularProgressRing"
+               BlueprintIdentifier = "78C71FD2FA84ADAEDF24D26BD8D52579"
+               BlueprintName = "XLPagerTabStrip"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "UICircularProgressRing.framework">
+               BuildableName = "XLPagerTabStrip.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

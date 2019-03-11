@@ -142,6 +142,7 @@ PODS:
   - SDWebImage/Core (4.4.5)
   - UICircularProgressRing (5.1.0)
   - WhatsNewKit (1.1.7)
+  - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
   - CropViewController
@@ -158,6 +159,7 @@ DEPENDENCIES:
   - SDWebImage
   - UICircularProgressRing
   - WhatsNewKit
+  - XLPagerTabStrip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -190,6 +192,7 @@ SPEC REPOS:
     - SDWebImage
     - UICircularProgressRing
     - WhatsNewKit
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -221,7 +224,8 @@ SPEC CHECKSUMS:
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   UICircularProgressRing: 988932dfcfef6a19b645e4eb8c37145e678e57f2
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
+  XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 552606251cf3f92865ec747a8b7eaee1a6fb5564
+PODFILE CHECKSUM: 5132b6f126653d794bba90bcf2dcb424ae865c39
 
 COCOAPODS: 1.5.3
